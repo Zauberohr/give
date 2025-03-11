@@ -10,9 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_10_163238) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_11_095345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.bigint "request_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_messages_on_request_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "user_skill_id", null: false
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
+    t.index ["user_skill_id"], name: "index_requests_on_user_skill_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "request_id", null: false
+    t.integer "rating"
+    t.text "content"
+    t.text "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_reviews_on_request_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.string "experience"
+    t.integer "overall_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +73,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_10_163238) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "requests"
+  add_foreign_key "messages", "users"
+  add_foreign_key "requests", "user_skills"
+  add_foreign_key "requests", "users"
+  add_foreign_key "reviews", "requests"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end
