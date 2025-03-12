@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
     @request.user_skill = @user_skill
     @request.user = current_user
     if @request.save
-      redirect_to @request, notice: "Request erfolgreich erstellt."
+      redirect_to @request, notice: "Request successfully created"
     else
       render "user_skills/show"
     end
