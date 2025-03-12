@@ -1,0 +1,16 @@
+
+<ul class="style">
+  <div class="userskill container">
+    <% @users.each do |user| %>
+      <div class="clickable-card"><%= link_to user_path(user) do %>
+        <li class="card">
+          <h1 class="user_skill"><%= user.email.split("@")[0].capitalize %></h1>
+          <% user.user_skills.each do |user_skill| %>
+            <%= user_skill.skill.name %><%= ", " unless user_skill == user.user_skills.last %>
+          <% end %>
+        </li><br>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</ul>

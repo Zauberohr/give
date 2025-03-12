@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     # Route for Messages / CHAT
     resources :messages, only: [:create]
   end
+  # Defines the root path route ("/")
+  # root "posts#index"
+  resources :user_skills, only: [:index]
+  resources :users, only: [:show]
 end
