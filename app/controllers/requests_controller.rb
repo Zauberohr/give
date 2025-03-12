@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
+    @request = Request.new
     @request.user_skill = @user_skill
     @request.user = current_user
     if @request.save
