@@ -1,2 +1,5 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%# Link to a chat page – here using a static request id (1). Replace with a dynamic value if needed. %>
+<%= link_to "Go to Chat", request_path(Request.first), class: "btn btn-primary" %>

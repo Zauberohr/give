@@ -1,0 +1,21 @@
+<!-- app/views/requests/show.html.erb -->
+<div class="container chat">
+  <h1>Your Request for <%= @request.user_skill.skill.name %></h1>
+
+  <!-- Subscribe to Turbo Stream channel for real-time updates -->
+  <%= turbo_stream_from "request_#{@request.id}_messages" %>
+
+  <div id="messages" class="messages">
+    <% @request.messages.each do |message| %>
+      <%= render "messages/message", message: message, user: current_user %>
+    <% end %>
+  </div>
+
+  <!-- Form to send a new message -->
+  <%= simple_form_for [@request, @message],
+        html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
+    <% other_user = current_user == @request.user_skill.user ? @request.user : @request.user_skill.user %>
+    <%= f.input :content, label: false, placeholder: "Message #{other_user.email}", wrapper_html: { class: "flex-grow-1" } %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
