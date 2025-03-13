@@ -1,9 +1,15 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-give">
+<div class="navbar navbar-expand-sm navbar-light navbar-default <%= "navbar-#{@role}" if @role %>">
   <div class="container-fluid">
 
     <%# Give Button always Home %>
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag("otto.png") %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <% if @role == :taker %>
+        <%= image_tag("T_weiß.png")%>
+      <% elsif @role == :giver %>
+        <%= image_tag("G_weiß.png")%>
+      <% else %>
+        <%= image_tag("GT_weiß.png")%>
+      <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
