@@ -1,11 +1,10 @@
 <% if current_user %>
 <div class="search">
-  <%= form_with url: user_skills_path , :method => :get do %>
-    <%= text_field_tag :query,
-            params[:query],
-            placeholder: "Search"
+  <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
+    <%= f.input :query,
+            placeholder: "Search", collection: Skill.all, input_html: {data:{controller:"tom-select"}}
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= f.submit %>
     <% end %>
 </div>
 
@@ -31,9 +30,11 @@
 </div>
   <h1>GIVE!</h1>
   <p>Hello World! this is our Home page with some infromation about the app.</p>
+
 <%= form_with url: user_skills_path , :method => :get do %>
   <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
 <% end %>
 <% end %>
 </div>
+<% end %>
 <%# Link to a chat page – here using a static request id (1). Replace with a dynamic value if needed. %>

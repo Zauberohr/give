@@ -1,5 +1,6 @@
 <ul class="style">
   <div class="userskill container">
+    <% if params[:search][:query].present? %>
     <% @user_skills.each do |user_skill| %>
       <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
         <li class="card">
@@ -10,6 +11,9 @@
         </li><br>
       <% end %>
       </div>
+    <% end %>
+    <% else %>
+    <p>Sorry! please enter something to search</p>
     <% end %>
   </div>
 </ul>
