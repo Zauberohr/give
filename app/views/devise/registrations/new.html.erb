@@ -15,6 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                input_html: { autocomplete: "name" } %>
+    <%= f.input :city,
+                input_html: { autocomplete: "city" } %>
   </div>
 
   <div class="form-actions">

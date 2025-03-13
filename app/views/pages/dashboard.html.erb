@@ -1,0 +1,23 @@
+<div style="text-align: center; margin-top: 20px;">
+  <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
+       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+</div>
+    <div>
+        <%= @user.name %>
+    </div>
+
+    <div>
+        <%= @user.email %>
+    </div>
+
+    <div>
+        <%= @user.password %>
+    </div>
+
+    <div>
+        <%= @user.city %>
+    </div>
+
+    <div>
+        <%= @user.skills.map(&:name).join(", ") %>
+    </div>
