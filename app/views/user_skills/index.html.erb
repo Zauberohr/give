@@ -1,12 +1,11 @@
-
 <ul class="style">
   <div class="userskill container">
-    <% @users.each do |user| %>
-      <div class="clickable-card"><%= link_to user_path(user) do %>
+    <% @user_skills.each do |user_skill| %>
+      <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
         <li class="card">
-          <h1 class="user_skill"><%= user.email.split("@")[0].capitalize %></h1>
-          <% user.user_skills.each do |user_skill| %>
-            <%= user_skill.skill.name %><%= ", " unless user_skill == user.user_skills.last %>
+          <h1 class="user_skill"><%= user_skill.user.email.split("@")[0].capitalize %></h1>
+          <% user_skill.user.user_skills.each do |skill| %>
+            <%= skill.skill.name %><%= ", " unless skill == user_skill.user.user_skills.last %>
           <% end %>
         </li><br>
       <% end %>
@@ -14,3 +13,10 @@
     <% end %>
   </div>
 </ul>
+
+<%# <div class="search">
+  <%= form_tag "/user_skill", method: "GET" do %>
+    <%# <%= label_tag %>
+    <%# <%= text_field_tag :search, params[:search] %>
+  <%# <% end %>
+<%# </div>  %>
