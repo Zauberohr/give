@@ -4,5 +4,4 @@ class UserSkillsController < ApplicationController
     @users = User.all
     # @user_skills = UserSkill.all
   end
-
 end
