@@ -1,0 +1,31 @@
+<h2>Edit your Profile</h2>
+<%= simple_form_for(@user, url: user_path, method: :patch) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.input :name %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.input :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.input :password %>
+  </div>
+
+  <div>
+    <%= f.label :city %>
+    <%= f.input :city %>
+  </div>
+
+  <div>
+    <%= f.label :skill %>
+    <%= f.input :skill %>
+  </div>
+
+  <div>
+    <%= f.submit "Save Changes" %>
+  </div>
+<% end %>

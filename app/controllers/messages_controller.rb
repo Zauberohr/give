@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
+
   def create
     @request = Request.find(params[:request_id])
     @message = Message.new(message_params)
     @message.request = @request
     @message.user = current_user
+    @role = :taker
 
     if @message.save
       respond_to do |format|
@@ -15,6 +17,7 @@ class MessagesController < ApplicationController
     else
       render "requests/show", status: :unprocessable_entity
     end
+
   end
 
   private

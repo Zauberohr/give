@@ -6,4 +6,13 @@ class PagesController < ApplicationController
     @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(4)
   end
 
+
+  def dashboard
+    @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
 end

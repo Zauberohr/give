@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_user_skill, only: [:create]
 
   def show
+    @role = :taker
     @request = Request.find(params[:id])
     @message = Message.new
   end
