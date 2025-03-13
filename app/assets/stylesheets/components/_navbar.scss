@@ -1,12 +1,20 @@
-.navbar-give {
+.navbar-default {
   justify-content: space-between;
-  background: white;
+  background: lightcoral
+}
+.navbar-giver {
+  background: lightcoral
+}
+.navbar-taker {
+  background: lightcoral
 }
 
-.navbar-give .navbar-collapse {
+
+
+.navbar-default .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-give .navbar-brand img {
+.navbar-default .navbar-brand img {
   width: 40px;
 }
