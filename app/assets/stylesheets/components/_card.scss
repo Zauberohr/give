@@ -1,0 +1,27 @@
+.card {
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 22px;
+  color: rgb(0, 0, 0);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.clickable-card a {
+  text-decoration: none;
+}
+
+.style {
+  padding: 0;
+}
+
+.clickable-card {
+  margin-bottom: -20px;
+  margin-top: 12px;
+}
+
