@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "dashboard", to: "pages#dashboard"
 
-  # Healthcheck route
-  get "up" => "rails/health#show", as: :rails_health_check
 
   # Routen for User Skills
   resources :user_skills do
