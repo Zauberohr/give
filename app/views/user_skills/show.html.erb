@@ -2,6 +2,7 @@
   <!-- User Info Section -->
   <h1><%= @user.name %> from <%= @user.city %></h1>
   <p><%= @user.summary %></p>
+
   <!-- Skills Section -->
   <div class="skills-section">
     <h3>Skills</h3>
@@ -12,6 +13,7 @@
           <strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5
         </div>
       <% end %>
+    </div>
   </div>
 
   <!-- User Reviews for This UserSkill -->
@@ -20,10 +22,14 @@
     <div class="reviews-container">
       <% if @reviews.any? %>
         <% @reviews.each do |review| %>
-          <div class="review">
-            <p><strong><%= review.title %></strong></p>
-            <p><%= review.content %></p>
-            <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+          <div class="review-card">
+            <div class="review-content">
+              <h4><%= review.title %></h4>
+              <p><%= review.content %></p>
+              <div class="review-rating">
+                <strong>Rating:</strong> <span class="rating"><%= review.rating %>/5</span>
+              </div>
+            </div>
           </div>
         <% end %>
       <% else %>
@@ -31,7 +37,6 @@
       <% end %>
     </div>
   </div>
-
 
   <%= link_to "Go to Chat", user_skill_requests_path(@user.user_skills.first), data:{turbo_method: :post}, class: "btn btn-primary" %>
 </div>
