@@ -27,9 +27,12 @@
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
 </div>
-  <h1>GIVE!</h1>
-  <p>Hello World! this is our Home page with some infromation about the app.</p>
 
+<div class="homepage-standard">
+<%= image_tag "TGkoralle.png" %>
+
+  <p>Hello World! this is our Home page with some infromation about the app.</p>
+<div class="homepage-standard">
 <%= form_with url: user_skills_path , :method => :get do %>
   <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
 <% end %>
