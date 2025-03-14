@@ -1,18 +1,17 @@
 <% if current_user %>
 <div class="search">
   <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
-    <%= f.input :query,
-            placeholder: "Search", collection: Skill.all, input_html: {data:{controller:"tom-select"}}
-        %>
-      <%= f.submit %>
+    <%= f.input :query, collection: Skill.all, input_html: {data:{controller:"tom-select"}}%>
+      <%= f.submit value="Search"%>
     <% end %>
 </div>
 
 <% @user_skills.each do |user_skill| %>
   <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
     <li class="card">
-      <h1 class="user_skill"><%= user_skill.user.email.split("@")[0].capitalize %></h1>
-      <%= user_skill.skill.name %>
+      <h1 class="user_skill"><%= user_skill.user.name.capitalize %></h1>
+      <h6><%= user_skill.user.city %></h6>
+      <h4><%= user_skill.skill.name %></h4>
     </li><br>
   </div>
   <%end%>
