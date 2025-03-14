@@ -27,18 +27,6 @@
             position: relative;
             z-index: 2;
         }
-        .image-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('/assets/noskill.png') no-repeat center center;
-            background-size: cover;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            z-index: 1; /* Über der Fehlerbox */
-        }
 
         .error-box:hover ~ .image-overlay {
             opacity: 1;
