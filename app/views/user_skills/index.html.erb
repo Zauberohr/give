@@ -1,10 +1,19 @@
+<div class="search">
+  <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
+    <%= f.input :query,
+            placeholder: "ruby", collection: Skill.all, input_html: {data:{controller:"tom-select"}}
+        %>
+      <%= f.submit %>
+    <% end %>
+</div>
 <ul class="style">
   <div class="userskill container">
-    <% if @query %>
+    <% if @query.present? %>
     <% @user_skills.each do |user_skill| %>
       <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
         <li class="card">
-          <h1 class="user_skill"><%= user_skill.user.email.split("@")[0].capitalize %></h1>
+          <h1 class="user_skill"><%= user_skill.user.name.capitalize %></h1>
+          <h6><%= user_skill.user.city %></h6>
           <% user_skill.user.user_skills.each do |skill| %>
             <%= skill.skill.name %><%= ", " unless skill == user_skill.user.user_skills.last %>
           <% end %>

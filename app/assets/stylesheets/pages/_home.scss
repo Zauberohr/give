@@ -12,3 +12,11 @@
 .signup-home {
   border-radius: 30px;
 }
+
+.search {
+  display: flex;
+  place-content: calc("Search");
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

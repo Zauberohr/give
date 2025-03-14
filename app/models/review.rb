@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
   belongs_to :request
-  belongs_to :user
+  has_one :user, through: :request
 end
