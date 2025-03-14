@@ -13,27 +13,27 @@ Skill.destroy_all
 
 # Hardcoded users
 users = [
-  { email: "alex@example.com", password: "123456" },
-  { email: "bernadette@example.com", password: "123457" },
-  { email: "charlie@example.com", password: "123458" },
-  { email: "diana@example.com", password: "123459" },
-  { email: "erik@example.com", password: "123460" },
-  { email: "fiona@example.com", password: "123461" },
-  { email: "george@example.com", password: "123462" },
-  { email: "helen@example.com", password: "123463" },
-  { email: "ian@example.com", password: "123464" },
-  { email: "julia@example.com", password: "123465" }
+  { email: "alex@example.com", password: "123456", name: "Alex", city: "Berlin", summary: "A highly skilled full-stack developer with 5+ years of experience in web technologies. Alex excels in problem-solving and delivering robust solutions. Highly proficient in Ruby on Rails, JavaScript, and React. Passionate about clean code and efficient workflows. Alex has an eye for details and consistently meets project deadlines. An expert in debugging and optimizing complex systems." },
+  { email: "bernadette@example.com", password: "123457", name: "Bernadette", city: "Hamburg", summary: "An experienced product manager with a strong background in agile methodologies. Bernadette focuses on user-centric designs and consistently delivers high-quality software. Known for excellent problem-solving skills, she tackles complex problems with ease. She is a go-to leader for her team, ensuring that everyone is motivated and aligned. Bernadette excels at setting priorities and driving innovation." },
+  { email: "charlie@example.com", password: "123458", name: "Charlie", city: "München", bisummary: "A highly experienced software engineer with a passion for building scalable web applications. Charlie specializes in JavaScript, Node.js, and Python. Known for an analytical approach to troubleshooting, he always finds optimal solutions. He is an advocate of clean, maintainable code and is always improving his skills. He thrives under pressure and is a strong team player who ensures timely delivery of projects." },
+  { email: "diana@example.com", password: "123459", name: "Diana", city: "Berlin", summary: "A talented software developer with expertise in both backend and frontend development. Diana is dedicated to delivering high-performance solutions that meet client needs. She is well-versed in multiple programming languages, including Java and Ruby. Diana is a problem solver who enjoys creating innovative solutions to complex technical challenges. She has a knack for breaking down tasks and staying organized." },
+  { email: "erik@example.com", password: "123460", name: "Erik", city: "Hamburg", summary: "An experienced software architect and team leader. Erik has a passion for designing and implementing large-scale distributed systems. He thrives on challenges and has led many successful projects from start to finish. Erik is adept at identifying inefficiencies in workflows and making process improvements. His leadership and communication skills enable him to manage cross-functional teams effectively." },
+  { email: "fiona@example.com", password: "123461", name: "Fiona", city: "München", summary: "A highly creative UI/UX designer with an eye for detail. Fiona creates intuitive and engaging user interfaces that enhance the user experience. She thrives in fast-paced environments and enjoys collaborating with cross-functional teams. Her problem-solving approach involves understanding user needs and implementing effective design solutions. Fiona is always experimenting with new tools and technologies to stay ahead in the design field." },
+  { email: "george@example.com", password: "123462", name: "George", city: "Berlin", summary: "A versatile full-stack developer with a strong command of JavaScript frameworks and backend technologies. George specializes in building web applications that scale efficiently. He has a deep understanding of performance optimization techniques. George enjoys working in agile environments and is quick to adapt to changing requirements. His logical approach to problem-solving and strong communication skills make him an excellent collaborator." },
+  { email: "helen@example.com", password: "123463", name: "Helen", city: "Hamburg", summary: "A senior product designer with over 8 years of experience in digital product design. Helen is known for her ability to translate business needs into functional, user-friendly designs. She is skilled at collaborating with development teams to ensure seamless implementation. Her problem-solving skills are exceptional, and she often finds creative solutions to complex design challenges. Helen is passionate about creating exceptional user experiences." },
+  { email: "ian@example.com", password: "123464", name: "Ian", city: "München", summary: "An experienced software developer with a focus on cloud computing and microservices. Ian excels in designing and developing solutions that leverage cloud technologies. He enjoys tackling complex technical challenges and delivering optimized solutions. Ian has strong communication skills, and his collaborative approach ensures project success. He is always exploring new technologies to stay at the cutting edge of software development." },
+  { email: "julia@example.com", password: "123465", name: "Julia", city: "Berlin", summary: "A talented mobile app developer with experience building both iOS and Android applications. Julia is known for her attention to detail and ability to develop applications that are both functional and visually appealing. She has a deep understanding of mobile development best practices and performance optimization. Julia excels at working with teams to deliver apps on time, and she is constantly improving her skills." }
 ]
 
 # Create user records
-created_users = users.map do |user_data|
-  User.find_or_create_by(email: user_data[:email]) do |u|
+users.each do |user_data|
+  user = User.find_or_create_by(email: user_data[:email]) do |u|
     u.password = user_data[:password]
+    u.name = user_data[:name]
+    u.city = user_data[:city]
+    u.summary = user_data[:summary]
   end
-end
-
-created_users.each do |user|
-  puts "User created: #{user.email} with skills: #{user.skills.map { |s| s.name }.join(', ')}"
+  puts "Created user: #{user.name} from #{user.city}"
 end
 
 # Create skills

@@ -25,4 +25,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :user_skills, only: [:index, :show]
   resources :users, only: [:show]
+
+  resources :users do
+    resources :reviews, only: [:index, :create]
+  end
+  
+  resources :users, only: [:show] do
+    get 'reviews', to: 'reviews#show'
+  end
 end

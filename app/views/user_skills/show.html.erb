@@ -1,20 +1,37 @@
-<H1>This is the show page</H1>
-
-<%# <h1><%= @user.email %>
-
-
-
-<!-- Skills Section -->
-  <%# <div class="skills-section">
+<div class="user-profile">
+  <!-- User Info Section -->
+  <h1><%= @user.name %> from <%= @user.city %></h1>
+  <p><%= @user.summary %></p>
+  <!-- Skills Section -->
+  <div class="skills-section">
     <h3>Skills</h3>
     <div class="skills">
-      <% @skills.each do |skill| %>
-        <%# <div class="skill">
-          <strong><%= skill.name %>
-        <%# </div>
+      <strong><%= @user_skill.skill.name %></strong> - <%= @user_skill.experience %> - Rating: <%= @user_skill.overall_rating %>/5
+      <% @user_skills_sorted.each do |user_skill| %>
+        <div class="skill">
+          <strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5
+        </div>
       <% end %>
-    <%# </div>
+  </div>
+
+  <!-- User Reviews for This UserSkill -->
+  <div class="reviews-section">
+    <h3>Reviews for <%= @user_skill.skill.name %></h3>
+    <div class="reviews-container">
+      <% if @reviews.any? %>
+        <% @reviews.each do |review| %>
+          <div class="review">
+            <p><strong><%= review.title %></strong></p>
+            <p><%= review.content %></p>
+            <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews available for this skill.</p>
+      <% end %>
+    </div>
   </div>
 
 
-<%= link_to "Go to Chat", user_skill_requests_path(@user.user_skills.first), data:{turbo_method: :post}, class: "btn btn-primary" %>
+  <%= link_to "Go to Chat", user_skill_requests_path(@user.user_skills.first), data:{turbo_method: :post}, class: "btn btn-primary" %>
+</div>
