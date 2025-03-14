@@ -1,7 +1,6 @@
 class UserSkillsController < ApplicationController
 
   def index
-
     @users = User.all
     # @user_skills = UserSkill.all
     # / thats for the logo
@@ -28,5 +27,8 @@ class UserSkillsController < ApplicationController
     else
       @user_skills_sorted = all_user_skills
     end
+
+    # Fetch reviews related to this specific user skill
+    @reviews = Review.where(request_id: @user_skill.requests.pluck(:id)).includes(:request)
   end
 end

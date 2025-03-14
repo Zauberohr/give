@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :user_skills
   has_many :skills, through: :user_skills
+  has_many :reviews
 end
