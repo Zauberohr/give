@@ -114,19 +114,38 @@ user_skills.each do |email, skills|
 end
 
 # 4. Hardcode Requests
-requests = []
-10.times do
-  user_id = User.all.sample.id  # Get a random user
-  user_skill_id = UserSkill.where(user_id: user_id).sample.id  # Get a random user_skill associated with the random user
-  completed = [true, false].sample  # Randomly assign whether the request is completed or not
+# requests = []
+# 10.times do
+#   user_id = User.all.sample.id  # Get a random user
+#   user_skill_id = UserSkill.where(user_id: user_id).sample.id  # Get a random user_skill associated with the random user
+#   completed = [true, false].sample  # Randomly assign whether the request is completed or not
 
-  requests << { user_id: user_id, user_skill_id: user_skill_id, completed: completed }
-end
+#   requests << { user_id: user_id, user_skill_id: user_skill_id, completed: completed }
+# end
 
-# Now create requests in the database
-requests.each do |request_data|
-  Request.create!(user_id: request_data[:user_id], user_skill_id: request_data[:user_skill_id], completed: request_data[:completed])
-  puts "Created request for user ##{request_data[:user_id]} with skill ##{request_data[:user_skill_id]} completed: #{request_data[:completed]}"
+# # Now create requests in the database
+# requests.each do |request_data|
+#   Request.create!(user_id: request_data[:user_id], user_skill_id: request_data[:user_skill_id], completed: request_data[:completed])
+#   puts "Created request for user ##{request_data[:user_id]} with skill ##{request_data[:user_skill_id]} completed: #{request_data[:completed]}"
+# end
+
+
+# instead, lets create 3-5 requests per user skill
+# during request creation, we make some reviews
+
+UserSkill.all.each do |user_skill|
+  rand(3..5).times do
+    request_data = {
+      # user making the request (taker):
+      user_id: User.all.sample.id,
+      # giver:
+      user_skill_id: user_skill.id,
+      completed: [true, true, false].sample
+    }
+    puts "creating request..."
+    Request.create!(user_id: request_data[:user_id], user_skill_id: request_data[:user_skill_id], completed: request_data[:completed])
+    puts "Created request for user ##{request_data[:user_id]} with skill ##{request_data[:user_skill_id]} completed: #{request_data[:completed]}"
+  end
 end
 
 # 5. Dynamically Create Messages with Random User and Request Associations
@@ -175,17 +194,35 @@ review_contents = [
 ]
 
 # Dynamically assign request_id, rating, and content for reviews
-review_records = []
-10.times do
-  request_id = Request.all.sample.id  # Randomly select a request
-  rating = rand(1..5)  # Randomly select a rating between 1 and 5
-  content = review_contents.sample  # Randomly select content from predefined list
+# review_records = []
+# 10.times do
+#   request = Request.all.sample  # Randomly select a request
+#   rating = rand(1..5)  # Randomly select a rating between 1 and 5
+#   content = review_contents.sample  # Randomly select content from predefined list
+#   user = request.user
+#   review_records << { request_id: request, rating: rating, content: content, title: "Review for request ##{request.id}", user_id: user }
+# end
 
-  review_records << { request_id: request_id, rating: rating, content: content, title: "Review for request ##{request_id}" }
+# # Now create reviews in the database
+# review_records.each do |review_data|
+#   Review.create!(request: review_data[:request_id], rating: review_data[:rating], content: review_data[:content], title: review_data[:title])
+#   puts "Created review for request ##{review_data[:request_id]} with rating #{review_data[:rating]}"
+# end
+
+# iterate over all Requests - if completed, then create a review
+
+Request.all.each do |request|
+  if request.completed
+    review_data = {
+      title: "Review for #{request.user_skill.skill.name} service",
+      content: review_contents.sample,
+      rating: rand(1..5),
+      request_id: request
+    }
+    puts "creating review..."
+    Review.create!(request: review_data[:request_id], rating: review_data[:rating], content: review_data[:content], title: review_data[:title])
+    puts "Created review for request ##{review_data[:request_id]} with rating #{review_data[:rating]}"
+  end
 end
 
-# Now create reviews in the database
-review_records.each do |review_data|
-  Review.create!(request_id: review_data[:request_id], rating: review_data[:rating], content: review_data[:content], title: review_data[:title])
-  puts "Created review for request ##{review_data[:request_id]} with rating #{review_data[:rating]}"
-end
+# request_id: review_data[:request_id],
