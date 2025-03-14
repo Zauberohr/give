@@ -1,13 +1,13 @@
 class UserSkillsController < ApplicationController
 
   def index
-    @users = User.all
+    # @users = User.all
     # @user_skills = UserSkill.all
     # / thats for the logo
     @role = :giver
-    @user_skills = UserSkill.all
-    if params[:query].present?
-      @user_skills = UserSkill.joins(:skill).where(skill:{ name: params[:query].capitalize })
+    if params[:search] && params[:search][:query].present?
+      @query = params[:search][:query]
+      @user_skills = UserSkill.joins(:skill).where(skill:{ id: params[:search][:query] })
     end
   end
 

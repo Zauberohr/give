@@ -2,7 +2,6 @@
   <!-- User Info Section -->
   <h1><%= @user.name %> from <%= @user.city %></h1>
   <p><%= @user.summary %></p>
-
   <!-- Skills Section -->
   <div class="skills-section">
     <h3>Skills</h3>
@@ -13,9 +12,7 @@
           <strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5
         </div>
       <% end %>
-    </div>
   </div>
-
 
   <!-- User Reviews for This UserSkill -->
   <div class="reviews-section">

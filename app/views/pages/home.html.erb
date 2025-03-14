@@ -1,4 +1,25 @@
+<% if current_user %>
 <div class="search">
+  <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
+    <%= f.input :query,
+            placeholder: "Search", collection: Skill.all, input_html: {data:{controller:"tom-select"}}
+        %>
+      <%= f.submit %>
+    <% end %>
+</div>
+
+<% @user_skills.each do |user_skill| %>
+  <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
+    <li class="card">
+      <h1 class="user_skill"><%= user_skill.user.email.split("@")[0].capitalize %></h1>
+      <%= user_skill.skill.name %>
+    </li><br>
+  </div>
+  <%end%>
+<% end %>
+<% else %>
+<div class="container-home">
+  <div class="search">
   <%= form_with url: user_skills_path , :method => :get do %>
     <%= text_field_tag :query,
             params[:query],
@@ -7,9 +28,12 @@
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
 </div>
-<div class="container-home">
   <h1>GIVE!</h1>
   <p>Hello World! this is our Home page with some infromation about the app.</p>
-</div>
 
+<%= form_with url: user_skills_path , :method => :get do %>
+  <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
+<% end %>
+</div>
+<% end %>
 <%# Link to a chat page – here using a static request id (1). Replace with a dynamic value if needed. %>
