@@ -1,0 +1,29 @@
+.navbar-dropdown-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px; /* Abstand zwischen den Elementen */
+  margin-top: 80px;
+  // width: 100%;
+  max-width: 600px; /* Falls eine maximale Breite gewünscht ist */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.menu-item {
+  // flex: 1;
+  text-align: center;
+  background-color: white; /* Hintergrundfarbe der Kästen */
+  padding: 1px 0;
+  width: 83px;
+  border-radius: 5px;
+  border: 2px solid lightgray; /* Optional: Umrandung */
+  text-decoration: none;
+  color: red;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: lightcoral;
+  color: white;
+}
