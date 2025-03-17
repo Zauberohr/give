@@ -1,7 +1,7 @@
 <% if current_user %>
 <div class="search">
   <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
-    <%= f.input :query, collection: Skill.all, input_html: {data:{controller:"tom-select"}}%>
+    <%= f.input :query, label: false, collection: Skill.all, input_html: {data:{controller:"tom-select"}}%>
       <%= f.submit value="Search"%>
     <% end %>
 </div>
