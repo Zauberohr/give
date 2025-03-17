@@ -15,30 +15,14 @@
   background: lightcoral
 }
 
-.navbar-default .navbar-collapse {
-  // flex-grow: 0;
-}
-
 .navbar-default .navbar-brand img {
   width: 75px;
 }
 
 .button-GIVE {
+  width: 75px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   margin-top: 23px;
-}
-
-.navbar-dropdown-menu {
-  margin-top: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  min-height: 50px;
-}
-
-.menu-item {
-
 }
