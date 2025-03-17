@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_user_skill, only: [:create]
-
+  before_action :set_request, only: [:completed]
   def show
     @role = :taker
     @request = Request.find(params[:id])
@@ -18,10 +18,25 @@ class RequestsController < ApplicationController
     end
   end
 
+  def completed
+    @request.update(completed: true)
+    @user = current_user
+    @user.balance -= 10
+    @user.save!
+    @creditor = @request.user_skill.user
+    @creditor.balance += 10
+    @creditor.save
+    redirect_to @request, notice: "Request completed"
+  end
+
   private
 
   def set_user_skill
     @user_skill = UserSkill.find(params[:user_skill_id])
+  end
+
+  def set_request
+    @request = Request.find(params[:id])
   end
 
   def request_params
