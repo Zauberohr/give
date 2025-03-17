@@ -5,7 +5,7 @@
   <div data-toggle-target="togglableElement" class="d-none">
     <% @requests_as_taker.each do |request| %>
       <% unless request.completed == true %>
-        <p>your request to  <%= link_to request.user_skill.user.name, request_path(request) %></p>
+        <p>your request to  <%= link_to request.user_skill.user.name, request_path(request) %> for <%= request.user_skill.skill.name %></p>
       <% end %>
     <% end %>
   </div>
