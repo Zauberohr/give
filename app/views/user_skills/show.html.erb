@@ -1,57 +1,48 @@
 <div class="user-profile">
   <!-- User Info Section -->
-  <h1><%= @user.name %> from <%= @user.city %></h1>
-  <p><%= @user.summary %></p>
+  <div class="userfrom">
+    <h1><%= @user.name %> from <%= @user.city %></h1>
+  </div>
 
-  <!-- Skills Section -->
-<div class="skills-section">
-  <h3>Skills</h3>
-  <div class="skills-container">
-    <!-- Highlighted skill (searched for) -->
-    <div class="skill-card primary-skill">
-      <strong><%= @user_skill.skill.name %></strong>
-      <p>Experience: <%= @user_skill.experience %></p>
-      <p>Rating: <span class="rating"><%= @user_skill.overall_rating %>/5</span></p>
+  <!-- Profilfoto & Skills -->
+  <div class="profile-container">
+    <div class="profilpicture">
+      <%= image_tag "Beispielfoto.png", alt: "Profilbild", class: "review-image" %>
     </div>
 
-    <!-- Other skills -->
-    <% @user_skills_sorted.each do |user_skill| %>
-      <div class="skill-card">
-        <strong><%= user_skill.skill.name %></strong>
-        <p>Experience: <%= user_skill.experience %></p>
-        <p>Rating: <span class="rating"><%= user_skill.overall_rating %>/5</span></p>
-      </div>
-    <% end %>
+    <!-- Skills Section -->
+    <div class="skills">
+      <p><strong><%= @user_skill.skill.name.upcase %></strong> - <%= @user_skill.experience %> - Rating: <%= @user_skill.overall_rating %>/5</p>
+      <% @user_skills_sorted.each do |user_skill| %>
+        <p><strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5</p>
+      <% end %>
+    </div>
   </div>
-</div>
 
+  <!-- Chat Button -->
+  <div class="chat-container">
+    <%= link_to "Chat with #{@user.name}", user_skill_requests_path(@user.user_skills.first), data: { turbo_method: :post }, class: "btn btn-primary chat-button" %>
+  </div>
 
+  <!-- Summary -->
+  <p><%= @user.summary %></p>
 
-
-<!-- User Reviews for This UserSkill -->
-<div class="reviews-section">
-  <% avg_rating = @reviews.average(:rating).to_f.round(2) if @reviews.any? %>
-  <p><strong>Average Rating for <%= @user_skill.skill.name %>:</strong> <%= avg_rating.present? ? "#{avg_rating}/5" : "No ratings yet" %></p>
-
-  <h3>Reviews for <%= @user_skill.skill.name %></h3>
-  <div class="reviews-container">
-    <% if @reviews.any? %>
-      <% @reviews.each do |review| %>
-        <div class="review-card">
-          <div class="review-content">
-            <h4><%= review.title %></h4>
-            <p><%= review.content %></p>
-            <div class="review-rating">
-              <strong>Rating:</strong> <span class="rating"><%= review.rating %>/5</span>
+  <!-- User Reviews for This UserSkill -->
+  <div class="reviews-section">
+    <div class="reviews-container">
+      <% if @reviews.any? %>
+        <% @reviews.each do |review| %>
+          <div class="review-card">
+            <div class="review-content">
+              <h4><%= review.title %></h4>
+              <p><%= review.content %></p>
+              <div class="review-rating"><strong>Rating:</strong> <span class="rating"><%= review.rating %>/5</span></div>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>No reviews available for this skill.</p>
       <% end %>
-    <% else %>
-      <p>No reviews available for this skill.</p>
-    <% end %>
+    </div>
   </div>
-</div>
-
-  <%= link_to "Go to Chat", user_skill_requests_path(@user.user_skills.first), data:{turbo_method: :post}, class: "btn btn-primary" %>
 </div>
