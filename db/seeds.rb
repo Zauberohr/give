@@ -189,8 +189,7 @@ UserSkill.all.each do |user_skill|
   end
 end
 
-# FOR SPECIFIC USERS FOR DEMO DAY, OVERWIRTE THE USER SKILL FOR THE USERS YOU WANT TO SHOW AND CHAT ITH IN DEMO!
-# User.all.first(3).each do .... (change the user skill)
+
 
 # 5. Dynamically Create Messages with Random User and Request Associations
 messages = [
@@ -272,3 +271,16 @@ Request.all.each do |request|
 end
 
 # request_id: review_data[:request_id],
+
+
+
+
+# FOR SPECIFIC USERS FOR DEMO DAY, OVERWIRTE THE USER SKILL FOR THE USERS YOU WANT TO SHOW AND CHAT ITH IN DEMO!
+# User.all.first(3).each do .... (change the user skill)
+
+
+# for demo day, eg using kat as main character
+# kat = User.fid_by(name: "Kat")
+# remove any current user skills and their requests and reviews (beware of depenency!!)
+# create relevant user skills for the story
+# for each new user skill, create 3-5 requets, and for each request, if complete, write a review
