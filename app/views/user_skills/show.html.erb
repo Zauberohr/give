@@ -7,7 +7,11 @@
   <!-- Profilfoto & Skills -->
   <div class="profile-container">
     <div class="profilpicture">
-      <%= image_tag "Beispielfoto.png", alt: "Profilbild", class: "review-image" %>
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
+      <% else %>
+        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg", class: "rounded-image" %>
+      <% end %>
     </div>
 
     <!-- Skills Section -->
