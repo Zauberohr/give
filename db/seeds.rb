@@ -11,7 +11,8 @@ Skill.destroy_all
 
 # 2. Create Users and Skills 🏗️
 
-# Hardcoded users
+# Hardcoded users - MAKE THIS MORE FUN LE WAGON VIBES!
+# FIRST 3 can be the ones you properly show on demo day
 users = [
   { email: "alex@example.com", password: "123456", name: "Alex", city: "Berlin", summary: "A highly skilled full-stack developer with 5+ years of experience in web technologies. Alex excels in problem-solving and delivering robust solutions. Highly proficient in Ruby on Rails, JavaScript, and React. Passionate about clean code and efficient workflows. Alex has an eye for details and consistently meets project deadlines. An expert in debugging and optimizing complex systems." },
   { email: "bernadette@example.com", password: "123457", name: "Bernadette", city: "Hamburg", summary: "An experienced product manager with a strong background in agile methodologies. Bernadette focuses on user-centric designs and consistently delivers high-quality software. Known for excellent problem-solving skills, she tackles complex problems with ease. She is a go-to leader for her team, ensuring that everyone is motivated and aligned. Bernadette excels at setting priorities and driving innovation." },
@@ -37,79 +38,110 @@ users.each do |user_data|
 end
 
 # Create skills
-skills = ['Ruby', 'JavaScript', 'Python', 'Java', 'C++', 'SQL', 'HTML', 'CSS', 'React', 'Rails']
+# skills = ['Ruby', 'JavaScript', 'Python', 'Java', 'C++', 'SQL', 'HTML', 'CSS', 'React', 'Rails']
+# skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
+
+
+# 2. Define skill categories with relevant skills
+skills = [
+  'Python', 'JavaScript', 'Ruby', 'C++', 'Java', 'SQL', 'HTML', 'CSS', 'React', 'Node.js',
+  'Yoga', 'Table Tennis', 'Tennis', 'Swimming', 'Running', 'Weightlifting', 'Cycling', 'Climbing', 'Boxing', 'Pilates',
+  'Painting', 'Sketching', 'Sculpting', 'Calligraphy', 'Photography', 'Digital Art', 'Graphic Design', 'Illustration', 'Watercoloring', 'Tattoo Design',
+  'Making Chutney', 'Cooking Indian Curries', 'Baking Bread', 'Fermenting Foods', 'Making Pasta from Scratch', 'Barista Skills', 'Knife Skills', 'Food Plating', 'Meal Prep', 'Wine Pairing',
+  'Contract Law Basics', 'Tax Optimization', 'Company Formation', 'Freelance Legal Rights', 'Employment Law', 'Consumer Protection Laws', 'Real Estate Law', 'Negotiation Skills', 'Intellectual Property Basics', 'Investment Law',
+  'Plumbing Basics', 'Carpentry', 'Electrical Wiring', 'Drywall Repair', 'Furniture Restoration', 'Tiling & Grouting', 'Painting Walls', 'Fixing Leaks', 'Installing Smart Home Devices', 'Sewing & Fabric Repair',
+  'Leadership Coaching', 'Career Coaching', 'Public Speaking', 'Time Management', 'Stress Management', 'Confidence Building', 'Life Coaching', 'Negotiation Tactics', 'Goal Setting', 'Mindfulness & Meditation',
+  'Fixing Flat Tires', 'Adjusting Brakes', 'Tuning a Bicycle Gear', 'Changing Car Oil', 'Replacing Brake Pads', 'Car Engine Diagnostics', 'Basic Car Repairs', 'Motorcycle Maintenance', 'Electric Scooter Repair', 'Building a Custom Bike',
+  'SEO Basics', 'Social Media Marketing', 'Content Writing', 'Graphic Design for Ads', 'Brand Building', 'Personal Branding', 'Video Editing', 'Copywriting', 'Market Research', 'Running Google Ads',
+  'English Fluency', 'German for Beginners', 'Spanish Conversation', 'French Pronunciation', 'Chinese Writing', 'Public Speaking', 'Storytelling', 'Interview Preparation', 'Business Email Writing', 'Negotiation in Foreign Languages'
+]
+
 skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
-# 3. Assign Skills to Users through UserSkill
-
-user_skills = {
-  "alex@example.com" => [
-    { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
-    { skill: "JavaScript", experience: "Advanced", overall_rating: 5 },
-    { skill: "Python", experience: "Beginner", overall_rating: 2 }
-  ],
-  "bernadette@example.com" => [
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "C++", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Beginner", overall_rating: 3 }
-  ],
-  "charlie@example.com" => [
-    { skill: "HTML", experience: "Intermediate", overall_rating: 4 },
-    { skill: "CSS", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "diana@example.com" => [
-    { skill: "Ruby", experience: "Advanced", overall_rating: 5 },
-    { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
-    { skill: "React", experience: "Beginner", overall_rating: 3 }
-  ],
-  "erik@example.com" => [
-    { skill: "SQL", experience: "Advanced", overall_rating: 5 },
-    { skill: "Rails", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Java", experience: "Beginner", overall_rating: 2 }
-  ],
-  "fiona@example.com" => [
-    { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Python", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "george@example.com" => [
-    { skill: "C++", experience: "Advanced", overall_rating: 5 },
-    { skill: "SQL", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Ruby", experience: "Beginner", overall_rating: 3 }
-  ],
-  "helen@example.com" => [
-    { skill: "Python", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "ian@example.com" => [
-    { skill: "HTML", experience: "Beginner", overall_rating: 3 },
-    { skill: "CSS", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Advanced", overall_rating: 5 }
-  ],
-  "julia@example.com" => [
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Beginner", overall_rating: 2 }
-  ]
-}
+puts "Skills created."
 
 
-user_skills.each do |email, skills|
-  user = User.find_by(email: email)  # Find the user by email
-  skills.each do |skill_data|
-    skill = Skill.find_by(name: skill_data[:skill])  # Find the skill by name
-    # Ensure the skill and user exist before creating the UserSkill
-    if user && skill
-      UserSkill.find_or_create_by(user: user, skill: skill) do |us|
-        us.experience = skill_data[:experience]
-        us.overall_rating = skill_data[:overall_rating]
-      end
-      puts "Assigned skill #{skill.name} to #{user.email}."
-    else
-      puts "Error: User or Skill not found for #{email} - #{skill_data[:skill]}"
-    end
+# 3. Assign Skills to Users through UserSkilluser_skills =
+# user_skills = {
+#   "alex@example.com" => [
+#     { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "JavaScript", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Python", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "bernadette@example.com" => [
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "C++", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "charlie@example.com" => [
+#     { skill: "HTML", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "CSS", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "diana@example.com" => [
+#     { skill: "Ruby", experience: "Advanced", overall_rating: 5 },
+#     { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "React", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "erik@example.com" => [
+#     { skill: "SQL", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Rails", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Java", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "fiona@example.com" => [
+#     { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Python", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "george@example.com" => [
+#     { skill: "C++", experience: "Advanced", overall_rating: 5 },
+#     { skill: "SQL", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Ruby", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "helen@example.com" => [
+#     { skill: "Python", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "ian@example.com" => [
+#     { skill: "HTML", experience: "Beginner", overall_rating: 3 },
+#     { skill: "CSS", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Advanced", overall_rating: 5 }
+#   ],
+#   "julia@example.com" => [
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Beginner", overall_rating: 2 }
+#   ]
+# }
+
+
+# user_skills.each do |email, skills|
+#   user = User.find_by(email: email)  # Find the user by email
+#   skills.each do |skill_data|
+#     skill = Skill.find_by(name: skill_data[:skill])  # Find the skill by name
+#     # Ensure the skill and user exist before creating the UserSkill
+#     if user && skill
+#       UserSkill.find_or_create_by(user: user, skill: skill) do |us|
+#         us.experience = skill_data[:experience]
+#         us.overall_rating = skill_data[:overall_rating]
+#       end
+#       puts "Assigned skill #{skill.name} to #{user.email}."
+#     else
+#       puts "Error: User or Skill not found for #{email} - #{skill_data[:skill]}"
+#     end
+#   end
+# end
+
+User.all.each do |user|
+  user_experience = ["Beginner", "Intermidiate", "Advanced"]
+  rand(3..5).times do
+    UserSkill.create!(
+      user: user,
+      skill: Skill.all.sample,
+      experience: user_experience.sample,
+      overall_rating: rand(2..5)
+    )
   end
 end
 
@@ -147,6 +179,9 @@ UserSkill.all.each do |user_skill|
     puts "Created request for user ##{request_data[:user_id]} with skill ##{request_data[:user_skill_id]} completed: #{request_data[:completed]}"
   end
 end
+
+# FOR SPECIFIC USERS FOR DEMO DAY, OVERWIRTE THE USER SKILL FOR THE USERS YOU WANT TO SHOW AND CHAT ITH IN DEMO!
+# User.all.first(3).each do .... (change the user skill)
 
 # 5. Dynamically Create Messages with Random User and Request Associations
 messages = [
@@ -197,7 +232,9 @@ review_contents = [
 # review_records = []
 # 10.times do
 #   request = Request.all.sample  # Randomly select a request
-#   rating = rand(1..5)  # Randomly select a rating between 1 and 5
+#   rating = rand(1..5)  # Randomly select a
+
+# rating between 1 and 5
 #   content = review_contents.sample  # Randomly select content from predefined list
 #   user = request.user
 #   review_records << { request_id: request, rating: rating, content: content, title: "Review for request ##{request.id}", user_id: user }
