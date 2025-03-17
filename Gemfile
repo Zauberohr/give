@@ -76,5 +76,4 @@ end
 
 gem "ostruct"
 
-
-
+gem "cloudinary"
