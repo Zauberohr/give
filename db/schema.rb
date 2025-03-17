@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_103508) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "solid_cable_messages", force: :cascade do |t|
