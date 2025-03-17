@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   # Independent request route for displaying a request (request detail page)
-  resources :requests, only: [:show] do
+  resources :requests, only: [:index, :show] do
     # Route for Messages / CHAT
     resources :messages, only: [:create]
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, only: [:index, :create]
   end
-  
+
   resources :users, only: [:show] do
     get 'reviews', to: 'reviews#show'
   end

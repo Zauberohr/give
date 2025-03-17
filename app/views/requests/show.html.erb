@@ -1,6 +1,9 @@
 <!-- app/views/requests/show.html.erb -->
 <div class="container chat">
-  <h1>Your Request for <%= @request.user_skill.skill.name %></h1>
+  <div class="d-flex justify-content-between">
+  <h1 class="request-header">Your Request for <%= @request.user_skill.skill.name %></h1>
+  <h1 class="request-header"><%= link_to "Back", requests_path %></h1>
+  </div>
 
   <!-- Subscribe to Turbo Stream channel for real-time updates -->
   <%= turbo_stream_from "request_#{@request.id}_messages" %>

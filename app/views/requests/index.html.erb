@@ -1,0 +1,19 @@
+<h1>here's your chats!</h1>
+
+<div data-controller="toggle" class="">
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Your Requests</button>
+  <div data-toggle-target="togglableElement" class="d-none">
+    <% @requests_as_taker.each do |request| %>
+      <% unless request.completed == true %>
+        <p>your request to  <%= link_to request.user_skill.user.name, request_path(request) %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div data-toggle-target="togglableElement">
+    <% @requests_as_giver.each do |request| %>
+      <% unless request.completed == true %>
+        <p>your request from  <%= link_to request.user.name, request_path(request) %> for <%= request.user_skill.skill.name %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
