@@ -77,3 +77,5 @@ end
 gem "ostruct"
 
 gem "cloudinary"
+
+gem "solid_cable"
