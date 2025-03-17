@@ -1,8 +1,3 @@
-// Specific CSS for your home-page
-.search {
-  display: flex;
-  place-content:calc("Search");
-}
 
 .container-home {
   margin-left: 25px;
@@ -11,12 +6,4 @@
 
 .signup-home {
   border-radius: 30px;
-}
-
-.search {
-  display: flex;
-  place-content: calc("Search");
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
 }

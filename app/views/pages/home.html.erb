@@ -1,10 +1,16 @@
 <% if current_user %>
-<div class="search">
-  <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
-    <%= f.input :query, label: false, collection: Skill.all, input_html: {data:{controller:"tom-select"}}%>
-      <%= f.submit value="Search"%>
-    <% end %>
+
+
+<div class="search-container">
+  <%= simple_form_for :search, url: user_skills_path, method: :get, html: { class: "search-form form-horizontal" } do |f| %>
+    <div class="search-wrapper">
+      <%= f.input :query, label: false, collection: Skill.all, input_html: { data: { controller: "tom-select" }, class: "search-input" } %>
+      <%= f.submit "Search", class: "search-button" %>
+    </div>
+  <% end %>
 </div>
+
+
 
 <% @user_skills.each do |user_skill| %>
   <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
