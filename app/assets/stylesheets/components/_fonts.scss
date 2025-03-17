@@ -1,5 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-body * {
+/* 1. Primary Heading (Hauptüberschrift) */
+h1{
   font-family: "Sansita Swashed", system-ui;
+  font-size: 30px; /* Oder eine gewünschte Größe */
+}
+
+/* 2. Secondary Heading (Unterüberschrift) */
+h2 {
+  font-family: "Sansita Swashed", system-ui;
+  font-size: 25px; /* Kleinere Größe als Primary */
+  font-weight: 600;
+}
+
+/* 3. Bold Text (Allgemeiner fettgedruckter Text) */
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px; /* Standardgröße */
+  font-weight: 700;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px; /* Standardgröße */
+  font-weight: 700;
+}
+
+/* 4. Regular Text (Allgemeiner normaler Text) */
+h5 {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
 }

@@ -1,11 +1,10 @@
 <div class="search">
   <%= simple_form_for :search, url: user_skills_path , :method => :get do |f| %>
-    <%= f.input :query,
-            placeholder: "ruby", collection: Skill.all, input_html: {data:{controller:"tom-select"}}
-        %>
-      <%= f.submit %>
+    <%= f.input :query, label: false, collection: Skill.all, input_html: {data:{controller:"tom-select"}}%>
+      <%= f.submit value="Search"%>
     <% end %>
 </div>
+
 <ul class="style">
   <div class="userskill container">
     <% if @query.present? %>
