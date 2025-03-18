@@ -2,11 +2,11 @@
   background: #fff;
   border: 1px solid lightcoral;
   border-radius: 25px;
-  padding: 15px;
+  padding: 1px;
   width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  margin-bottom: 5px;
+  margin-bottom: 40px;
 }
 
 .clickable-card a {
@@ -20,4 +20,31 @@
 .clickable-card {
   margin-bottom: -20px;
   margin-top: 12px;
+}
+
+/* Stellt sicher, dass das Bild links und der Text rechts ist */
+.card-content {
+  display: flex;
+  align-items: center; /* Sorgt dafür, dass Bild und Text auf einer Linie sind */
+  gap: 15px; /* Abstand zwischen Bild und Text */
+  padding: 10px;
+}
+
+/* Bild links mit fester Größe */
+.card-image {
+  flex-shrink: 0; /* Verhindert, dass das Bild verkleinert wird */
+}
+
+.rounded-image {
+  width: 100px; /* Größe des Bildes */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Text rechts neben dem Bild */
+.card-text {
+  flex: 1; /* Nimmt den restlichen Platz ein */
+  display: flex;
+  flex-direction: column;
 }
