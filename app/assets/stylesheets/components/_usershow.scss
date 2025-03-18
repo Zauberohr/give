@@ -111,3 +111,23 @@ reviews-container {
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
+.skills-container-profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.skill-box-profile {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid lightcoral;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

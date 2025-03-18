@@ -1,27 +1,34 @@
+<div class=main.cointainer>
+
 <div style="text-align: center; margin-top: 20px;">
-  <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
+  <img  alt="Profile Picture"
        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
 </div>
-    <div>
-        <%= @user.name %>
-    </div>
-
-    <div>
-        <%= @user.email %>
+    <h1 div>
+        <%= @user.name %> from <%= @user.city %>
     </div>
 
     <div>
         <%= @user.password %>
     </div>
 
-    <div>
-        <%= @user.city %>
-    </div>
-
-    <div>
-        <%= @user.skills.map(&:name).join(", ") %>
-    </div>
+<div class="skills-container-profile">
+  <% @user.skills.each do |skill| %>
+    <div class="skill-box-profile"><%= skill.name %></div>
+  <% end %>
+</div>
 
     <div>
         <strong>Balance:</strong> <%= @user.balance %> credits
     </div>
+
+<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout-button" %>
+
+</div>
+  <!-- EMAIL
+
+    <div>
+        <%= @user.email %>
+</div>
+
+ -->
