@@ -3,9 +3,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* Exakt mittig */
-  background: red; /* Hellblau mit Transparenz */
+  background: lightcoral; /* Hellblau mit Transparenz */
   border: 2px solid black; /* Schwarzer Rand */
-  padding: 16px; /* Abstand innen */
+  padding: 16px;
+  border-radius: 25px; /* Abstand innen */
   z-index: 1000;
   text-align: center; /* Falls Text enthalten ist */
 }

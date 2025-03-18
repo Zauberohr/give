@@ -1,0 +1,51 @@
+/* Container für Bild + Skills */
+.profile-container {
+  display: flex;
+  align-items: center; /* Damit Profilbild & Text oben ausgerichtet sind */
+  gap: 20px;
+}
+
+.info-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Stellt sicher, dass der Button über den Skills bleibt */
+  gap: 10px; /* Abstand zwischen Chat-Button und Skills */
+}
+
+.chat-button {
+  background-color: lightcoral; /* Rote Farbe für den Button */
+  color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%; /* Volle Breite */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+
+.chat-button:hover {
+  background-color: #e04b4b; /* Dunkleres Rot beim Hover */
+}
+/* Profilfoto */
+.review-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid lightcoral;
+  object-fit: cover;
+  display: block;
+}
+
+
+.userfrom {
+text-align: Center;
+font-size: 10rem;
+margin-bottom: 10px;
+}
+
+.skills {
+  flex: 1; /* Skills nehmen den verbleibenden Platz ein */
+}

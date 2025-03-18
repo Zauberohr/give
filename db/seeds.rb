@@ -1,3 +1,5 @@
+require "open-uri"
+
 # 1. Clean the database
 puts "Cleaning database..."
 Message.destroy_all
@@ -7,22 +9,21 @@ UserSkill.destroy_all
 User.destroy_all
 Skill.destroy_all
 
-
-
 # 2. Create Users and Skills 🏗️
 
-# Hardcoded users
+# Hardcoded users - MAKE THIS MORE FUN LE WAGON VIBES!
+# FIRST 3 can be the ones you properly show on demo day
 users = [
-  { email: "alex@example.com", password: "123456", name: "Alex", city: "Berlin", summary: "A highly skilled full-stack developer with 5+ years of experience in web technologies. Alex excels in problem-solving and delivering robust solutions. Highly proficient in Ruby on Rails, JavaScript, and React. Passionate about clean code and efficient workflows. Alex has an eye for details and consistently meets project deadlines. An expert in debugging and optimizing complex systems." },
-  { email: "bernadette@example.com", password: "123457", name: "Bernadette", city: "Hamburg", summary: "An experienced product manager with a strong background in agile methodologies. Bernadette focuses on user-centric designs and consistently delivers high-quality software. Known for excellent problem-solving skills, she tackles complex problems with ease. She is a go-to leader for her team, ensuring that everyone is motivated and aligned. Bernadette excels at setting priorities and driving innovation." },
-  { email: "charlie@example.com", password: "123458", name: "Charlie", city: "München", bisummary: "A highly experienced software engineer with a passion for building scalable web applications. Charlie specializes in JavaScript, Node.js, and Python. Known for an analytical approach to troubleshooting, he always finds optimal solutions. He is an advocate of clean, maintainable code and is always improving his skills. He thrives under pressure and is a strong team player who ensures timely delivery of projects." },
-  { email: "diana@example.com", password: "123459", name: "Diana", city: "Berlin", summary: "A talented software developer with expertise in both backend and frontend development. Diana is dedicated to delivering high-performance solutions that meet client needs. She is well-versed in multiple programming languages, including Java and Ruby. Diana is a problem solver who enjoys creating innovative solutions to complex technical challenges. She has a knack for breaking down tasks and staying organized." },
-  { email: "erik@example.com", password: "123460", name: "Erik", city: "Hamburg", summary: "An experienced software architect and team leader. Erik has a passion for designing and implementing large-scale distributed systems. He thrives on challenges and has led many successful projects from start to finish. Erik is adept at identifying inefficiencies in workflows and making process improvements. His leadership and communication skills enable him to manage cross-functional teams effectively." },
-  { email: "fiona@example.com", password: "123461", name: "Fiona", city: "München", summary: "A highly creative UI/UX designer with an eye for detail. Fiona creates intuitive and engaging user interfaces that enhance the user experience. She thrives in fast-paced environments and enjoys collaborating with cross-functional teams. Her problem-solving approach involves understanding user needs and implementing effective design solutions. Fiona is always experimenting with new tools and technologies to stay ahead in the design field." },
-  { email: "george@example.com", password: "123462", name: "George", city: "Berlin", summary: "A versatile full-stack developer with a strong command of JavaScript frameworks and backend technologies. George specializes in building web applications that scale efficiently. He has a deep understanding of performance optimization techniques. George enjoys working in agile environments and is quick to adapt to changing requirements. His logical approach to problem-solving and strong communication skills make him an excellent collaborator." },
-  { email: "helen@example.com", password: "123463", name: "Helen", city: "Hamburg", summary: "A senior product designer with over 8 years of experience in digital product design. Helen is known for her ability to translate business needs into functional, user-friendly designs. She is skilled at collaborating with development teams to ensure seamless implementation. Her problem-solving skills are exceptional, and she often finds creative solutions to complex design challenges. Helen is passionate about creating exceptional user experiences." },
-  { email: "ian@example.com", password: "123464", name: "Ian", city: "München", summary: "An experienced software developer with a focus on cloud computing and microservices. Ian excels in designing and developing solutions that leverage cloud technologies. He enjoys tackling complex technical challenges and delivering optimized solutions. Ian has strong communication skills, and his collaborative approach ensures project success. He is always exploring new technologies to stay at the cutting edge of software development." },
-  { email: "julia@example.com", password: "123465", name: "Julia", city: "Berlin", summary: "A talented mobile app developer with experience building both iOS and Android applications. Julia is known for her attention to detail and ability to develop applications that are both functional and visually appealing. She has a deep understanding of mobile development best practices and performance optimization. Julia excels at working with teams to deliver apps on time, and she is constantly improving her skills." }
+  { email: "otto@legwagon.com", password: "123456", name: "Otto", city: "Berlin", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/urgtwlvdafzszdan9nqr.jpg", summary: "A highly skilled full-stack developer with 5+ years of experience in web technologies. Alex excels in problem-solving and delivering robust solutions. Highly proficient in Ruby on Rails, JavaScript, and React. Passionate about clean code and efficient workflows. Alex has an eye for details and consistently meets project deadlines. An expert in debugging and optimizing complex systems." },
+  { email: "oscar@legwagon.com", password: "123457", name: "Oscar", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209110/User%20Pics%20Give/k0jzbx8sljzm06b7km4s.jpg",summary: "An experienced product manager with a strong background in agile methodologies. Bernadette focuses on user-centric designs and consistently delivers high-quality software. Known for excellent problem-solving skills, she tackles complex problems with ease. She is a go-to leader for her team, ensuring that everyone is motivated and aligned. Bernadette excels at setting priorities and driving innovation." },
+  { email: "massih@legwagon.com", password: "123458", name: "Massih", city: "München", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209110/User%20Pics%20Give/c9tfn02cyivaebwtw7om.jpg", summary: "A highly experienced software engineer with a passion for building scalable web applications. Charlie specializes in JavaScript, Node.js, and Python. Known for an analytical approach to troubleshooting, he always finds optimal solutions. He is an advocate of clean, maintainable code and is always improving his skills. He thrives under pressure and is a strong team player who ensures timely delivery of projects." },
+  { email: "darius@legwagon.com", password: "123459", name: "Darius", city: "Berlin", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/xgz0gi2z6waric0s6ryc.jpg", summary: "A talented software developer with expertise in both backend and frontend development. Diana is dedicated to delivering high-performance solutions that meet client needs. She is well-versed in multiple programming languages, including Java and Ruby. Diana is a problem solver who enjoys creating innovative solutions to complex technical challenges. She has a knack for breaking down tasks and staying organized." },
+  { email: "tamari@legwagon.com", password: "123460", name: "Tamari", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/ks3aipdrg83s5ucf2uma.jpg", summary: "An experienced software architect and team leader. Erik has a passion for designing and implementing large-scale distributed systems. He thrives on challenges and has led many successful projects from start to finish. Erik is adept at identifying inefficiencies in workflows and making process improvements. His leadership and communication skills enable him to manage cross-functional teams effectively." },
+  { email: "yuta@legwagon.com", password: "123461", name: "Yuta", city: "München", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/k105jfgdvsr1kb82ukkk.jpg", summary: "A highly creative UI/UX designer with an eye for detail. Fiona creates intuitive and engaging user interfaces that enhance the user experience. She thrives in fast-paced environments and enjoys collaborating with cross-functional teams. Her problem-solving approach involves understanding user needs and implementing effective design solutions. Fiona is always experimenting with new tools and technologies to stay ahead in the design field." },
+  { email: "ahlam@legwagon.com", password: "123462", name: "Ahlam", city: "Berlin", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/c3fus44btq1mlh26gfpm.jpg", summary: "A versatile full-stack developer with a strong command of JavaScript frameworks and backend technologies. George specializes in building web applications that scale efficiently. He has a deep understanding of performance optimization techniques. George enjoys working in agile environments and is quick to adapt to changing requirements. His logical approach to problem-solving and strong communication skills make him an excellent collaborator." },
+  { email: "naakul@legwagon.com", password: "123456", name: "Naakul", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/u0xxfrjluonhjwvfny9h.jpg", summary: "A senior product designer with over 8 years of experience in digital product design. Helen is known for her ability to translate business needs into functional, user-friendly designs. She is skilled at collaborating with development teams to ensure seamless implementation. Her problem-solving skills are exceptional, and she often finds creative solutions to complex design challenges. Helen is passionate about creating exceptional user experiences." },
+  { email: "ian@legwagon.com", password: "123464", name: "Ian", city: "München", picture_url: "https://biografieonline.it/img/bio/gallery/j/Jannik_Sinner_13.jpg", summary: "An experienced software developer with a focus on cloud computing and microservices. Ian excels in designing and developing solutions that leverage cloud technologies. He enjoys tackling complex technical challenges and delivering optimized solutions. Ian has strong communication skills, and his collaborative approach ensures project success. He is always exploring new technologies to stay at the cutting edge of software development." },
+  { email: "julia@legwagon.com", password: "123465", name: "Julia", city: "Berlin", picture_url: "https://tse3.mm.bing.net/th?id=OIP._f4BrshhUe0JylihohGTjwHaJ4&pid=Api", summary: "A talented mobile app developer with experience building both iOS and Android applications. Julia is known for her attention to detail and ability to develop applications that are both functional and visually appealing. She has a deep understanding of mobile development best practices and performance optimization. Julia excels at working with teams to deliver apps on time, and she is constantly improving her skills." }
 ]
 
 # Create user records
@@ -32,84 +33,124 @@ users.each do |user_data|
     u.name = user_data[:name]
     u.city = user_data[:city]
     u.summary = user_data[:summary]
+    # file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
+    u.picture_url = user_data[:picture_url]
+    file = URI.open(user_data[:picture_url])
+    u.photo.attach(io: file, filename: "user_name.png", content_type: "image/png")
+    u.save
   end
   puts "Created user: #{user.name} from #{user.city}"
 end
 
+
+
+
+
 # Create skills
-skills = ['Ruby', 'JavaScript', 'Python', 'Java', 'C++', 'SQL', 'HTML', 'CSS', 'React', 'Rails']
+# skills = ['Ruby', 'JavaScript', 'Python', 'Java', 'C++', 'SQL', 'HTML', 'CSS', 'React', 'Rails']
+# skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
+
+
+# 2. Define skill categories with relevant skills
+skills = [
+  'Python', 'JavaScript', 'Ruby', 'C++', 'Java', 'SQL', 'HTML', 'CSS', 'React', 'Node.js',
+  'Yoga', 'Table Tennis', 'Tennis', 'Swimming', 'Running', 'Weightlifting', 'Cycling', 'Climbing', 'Boxing', 'Pilates',
+  'Painting', 'Sketching', 'Sculpting', 'Calligraphy', 'Photography', 'Digital Art', 'Graphic Design', 'Illustration', 'Watercoloring', 'Tattoo Design',
+  'Making Chutney', 'Cooking Indian Curries', 'Baking Bread', 'Fermenting Foods', 'Making Pasta from Scratch', 'Barista Skills', 'Knife Skills', 'Food Plating', 'Meal Prep', 'Wine Pairing',
+  'Contract Law Basics', 'Tax Optimization', 'Company Formation', 'Freelance Legal Rights', 'Employment Law', 'Consumer Protection Laws', 'Real Estate Law', 'Negotiation Skills', 'Intellectual Property Basics', 'Investment Law',
+  'Plumbing Basics', 'Carpentry', 'Electrical Wiring', 'Drywall Repair', 'Furniture Restoration', 'Tiling & Grouting', 'Painting Walls', 'Fixing Leaks', 'Installing Smart Home Devices', 'Sewing & Fabric Repair',
+  'Leadership Coaching', 'Career Coaching', 'Public Speaking', 'Time Management', 'Stress Management', 'Confidence Building', 'Life Coaching', 'Negotiation Tactics', 'Goal Setting', 'Mindfulness & Meditation',
+  'Fixing Flat Tires', 'Adjusting Brakes', 'Tuning a Bicycle Gear', 'Changing Car Oil', 'Replacing Brake Pads', 'Car Engine Diagnostics', 'Basic Car Repairs', 'Motorcycle Maintenance', 'Electric Scooter Repair', 'Building a Custom Bike',
+  'SEO Basics', 'Social Media Marketing', 'Content Writing', 'Graphic Design for Ads', 'Brand Building', 'Personal Branding', 'Video Editing', 'Copywriting', 'Market Research', 'Running Google Ads',
+  'English Fluency', 'German for Beginners', 'Spanish Conversation', 'French Pronunciation', 'Chinese Writing', 'Public Speaking', 'Storytelling', 'Interview Preparation', 'Business Email Writing', 'Negotiation in Foreign Languages'
+]
+
 skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
-# 3. Assign Skills to Users through UserSkill
-
-user_skills = {
-  "alex@example.com" => [
-    { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
-    { skill: "JavaScript", experience: "Advanced", overall_rating: 5 },
-    { skill: "Python", experience: "Beginner", overall_rating: 2 }
-  ],
-  "bernadette@example.com" => [
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "C++", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Beginner", overall_rating: 3 }
-  ],
-  "charlie@example.com" => [
-    { skill: "HTML", experience: "Intermediate", overall_rating: 4 },
-    { skill: "CSS", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "diana@example.com" => [
-    { skill: "Ruby", experience: "Advanced", overall_rating: 5 },
-    { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
-    { skill: "React", experience: "Beginner", overall_rating: 3 }
-  ],
-  "erik@example.com" => [
-    { skill: "SQL", experience: "Advanced", overall_rating: 5 },
-    { skill: "Rails", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Java", experience: "Beginner", overall_rating: 2 }
-  ],
-  "fiona@example.com" => [
-    { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Python", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "george@example.com" => [
-    { skill: "C++", experience: "Advanced", overall_rating: 5 },
-    { skill: "SQL", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Ruby", experience: "Beginner", overall_rating: 3 }
-  ],
-  "helen@example.com" => [
-    { skill: "Python", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "React", experience: "Beginner", overall_rating: 2 }
-  ],
-  "ian@example.com" => [
-    { skill: "HTML", experience: "Beginner", overall_rating: 3 },
-    { skill: "CSS", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Advanced", overall_rating: 5 }
-  ],
-  "julia@example.com" => [
-    { skill: "Java", experience: "Advanced", overall_rating: 5 },
-    { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
-    { skill: "Rails", experience: "Beginner", overall_rating: 2 }
-  ]
-}
+puts "Skills created."
 
 
-user_skills.each do |email, skills|
-  user = User.find_by(email: email)  # Find the user by email
-  skills.each do |skill_data|
-    skill = Skill.find_by(name: skill_data[:skill])  # Find the skill by name
-    # Ensure the skill and user exist before creating the UserSkill
-    if user && skill
-      UserSkill.find_or_create_by(user: user, skill: skill) do |us|
-        us.experience = skill_data[:experience]
-        us.overall_rating = skill_data[:overall_rating]
-      end
-      puts "Assigned skill #{skill.name} to #{user.email}."
-    else
-      puts "Error: User or Skill not found for #{email} - #{skill_data[:skill]}"
-    end
+# 3. Assign Skills to Users through UserSkilluser_skills =
+# user_skills = {
+#   "alex@example.com" => [
+#     { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "JavaScript", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Python", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "bernadette@example.com" => [
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "C++", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "charlie@example.com" => [
+#     { skill: "HTML", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "CSS", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "diana@example.com" => [
+#     { skill: "Ruby", experience: "Advanced", overall_rating: 5 },
+#     { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "React", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "erik@example.com" => [
+#     { skill: "SQL", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Rails", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Java", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "fiona@example.com" => [
+#     { skill: "JavaScript", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Python", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "george@example.com" => [
+#     { skill: "C++", experience: "Advanced", overall_rating: 5 },
+#     { skill: "SQL", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Ruby", experience: "Beginner", overall_rating: 3 }
+#   ],
+#   "helen@example.com" => [
+#     { skill: "Python", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "React", experience: "Beginner", overall_rating: 2 }
+#   ],
+#   "ian@example.com" => [
+#     { skill: "HTML", experience: "Beginner", overall_rating: 3 },
+#     { skill: "CSS", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Advanced", overall_rating: 5 }
+#   ],
+#   "julia@example.com" => [
+#     { skill: "Java", experience: "Advanced", overall_rating: 5 },
+#     { skill: "Ruby", experience: "Intermediate", overall_rating: 4 },
+#     { skill: "Rails", experience: "Beginner", overall_rating: 2 }
+#   ]
+# }
+
+
+# user_skills.each do |email, skills|
+#   user = User.find_by(email: email)  # Find the user by email
+#   skills.each do |skill_data|
+#     skill = Skill.find_by(name: skill_data[:skill])  # Find the skill by name
+#     # Ensure the skill and user exist before creating the UserSkill
+#     if user && skill
+#       UserSkill.find_or_create_by(user: user, skill: skill) do |us|
+#         us.experience = skill_data[:experience]
+#         us.overall_rating = skill_data[:overall_rating]
+#       end
+#       puts "Assigned skill #{skill.name} to #{user.email}."
+#     else
+#       puts "Error: User or Skill not found for #{email} - #{skill_data[:skill]}"
+#     end
+#   end
+# end
+
+User.all.each do |user|
+  user_experience = ["Beginner", "Intermidiate", "Advanced"]
+  rand(3..5).times do
+    UserSkill.create!(
+      user: user,
+      skill: Skill.all.sample,
+      experience: user_experience.sample,
+      overall_rating: rand(2..5)
+    )
   end
 end
 
@@ -147,6 +188,9 @@ UserSkill.all.each do |user_skill|
     puts "Created request for user ##{request_data[:user_id]} with skill ##{request_data[:user_skill_id]} completed: #{request_data[:completed]}"
   end
 end
+
+# FOR SPECIFIC USERS FOR DEMO DAY, OVERWIRTE THE USER SKILL FOR THE USERS YOU WANT TO SHOW AND CHAT ITH IN DEMO!
+# User.all.first(3).each do .... (change the user skill)
 
 # 5. Dynamically Create Messages with Random User and Request Associations
 messages = [
@@ -197,7 +241,9 @@ review_contents = [
 # review_records = []
 # 10.times do
 #   request = Request.all.sample  # Randomly select a request
-#   rating = rand(1..5)  # Randomly select a rating between 1 and 5
+#   rating = rand(1..5)  # Randomly select a
+
+# rating between 1 and 5
 #   content = review_contents.sample  # Randomly select content from predefined list
 #   user = request.user
 #   review_records << { request_id: request, rating: rating, content: content, title: "Review for request ##{request.id}", user_id: user }
