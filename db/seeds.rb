@@ -21,10 +21,11 @@ users = [
   { email: "tamari@lewagon.com", password: "123456", name: "Tamari", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/ks3aipdrg83s5ucf2uma.jpg", summary: "An experienced software architect and team leader. Erik has a passion for designing and implementing large-scale distributed systems. He thrives on challenges and has led many successful projects from start to finish. Erik is adept at identifying inefficiencies in workflows and making process improvements. His leadership and communication skills enable him to manage cross-functional teams effectively." },
   { email: "yuta@lewagon.com", password: "123456", name: "Yuta", city: "München", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/k105jfgdvsr1kb82ukkk.jpg", summary: "A highly creative UI/UX designer with an eye for detail. Fiona creates intuitive and engaging user interfaces that enhance the user experience. She thrives in fast-paced environments and enjoys collaborating with cross-functional teams. Her problem-solving approach involves understanding user needs and implementing effective design solutions. Fiona is always experimenting with new tools and technologies to stay ahead in the design field." },
   { email: "ahlam@lewagon.com", password: "123456", name: "Ahlam", city: "Berlin", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/c3fus44btq1mlh26gfpm.jpg", summary: "A versatile full-stack developer with a strong command of JavaScript frameworks and backend technologies. George specializes in building web applications that scale efficiently. He has a deep understanding of performance optimization techniques. George enjoys working in agile environments and is quick to adapt to changing requirements. His logical approach to problem-solving and strong communication skills make him an excellent collaborator." },
-  { email: "nakul@lewagon.com", password: "123456", name: "Nakul", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/u0xxfrjluonhjwvfny9h.jpg", summary: "A senior product designer with over 8 years of experience in digital product design. Helen is known for her ability to translate business needs into functional, user-friendly designs. She is skilled at collaborating with development teams to ensure seamless implementation. Her problem-solving skills are exceptional, and she often finds creative solutions to complex design challenges. Helen is passionate about creating exceptional user experiences." },
+  { email: "naakul@lewagon.com", password: "123456", name: "Naakul", city: "Hamburg", picture_url: "https://res.cloudinary.com/djufjbe6h/image/upload/v1742209109/User%20Pics%20Give/u0xxfrjluonhjwvfny9h.jpg", summary: "A senior product designer with over 8 years of experience in digital product design. Helen is known for her ability to translate business needs into functional, user-friendly designs. She is skilled at collaborating with development teams to ensure seamless implementation. Her problem-solving skills are exceptional, and she often finds creative solutions to complex design challenges. Helen is passionate about creating exceptional user experiences." },
   { email: "ian@lewagon.com", password: "123456", name: "Ian", city: "München", picture_url: "https://biografieonline.it/img/bio/gallery/j/Jannik_Sinner_13.jpg", summary: "An experienced software developer with a focus on cloud computing and microservices. Ian excels in designing and developing solutions that leverage cloud technologies. He enjoys tackling complex technical challenges and delivering optimized solutions. Ian has strong communication skills, and his collaborative approach ensures project success. He is always exploring new technologies to stay at the cutting edge of software development." },
   { email: "julia@lewagon.com", password: "123456", name: "Julia", city: "Berlin", picture_url: "https://tse3.mm.bing.net/th?id=OIP._f4BrshhUe0JylihohGTjwHaJ4&pid=Api", summary: "A talented mobile app developer with experience building both iOS and Android applications. Julia is known for her attention to detail and ability to develop applications that are both functional and visually appealing. She has a deep understanding of mobile development best practices and performance optimization. Julia excels at working with teams to deliver apps on time, and she is constantly improving her skills." }
 ]
+
 
 # Create user records
 users.each do |user_data|
@@ -33,6 +34,7 @@ users.each do |user_data|
     u.name = user_data[:name]
     u.city = user_data[:city]
     u.summary = user_data[:summary]
+    u.balance = 100
     # file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
     u.picture_url = user_data[:picture_url]
     file = URI.open(user_data[:picture_url])
@@ -69,6 +71,15 @@ skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
 puts "Skills created."
 
+# Create Ruby skill
+ruby_skill = Skill.find_or_create_by(name: "Ruby")
+
+# Assign Ruby skill to 5 users
+ruby_users = User.limit(5)
+ruby_users.each do |user|
+  UserSkill.create!(user: user, skill: ruby_skill, experience: 'Advanced', overall_rating: 5)
+  puts "Assigned Ruby skill to #{user.name}."
+end
 
 # 3. Assign Skills to Users through UserSkilluser_skills =
 # user_skills = {
@@ -142,7 +153,7 @@ puts "Skills created."
 #   end
 # end
 
-User.all.each do |user|
+User.where.not(email: "naakul@lewagon.com").each do |user|
   user_experience = ["Beginner", "Intermidiate", "Advanced"]
   rand(3..5).times do
     UserSkill.create!(
@@ -153,6 +164,45 @@ User.all.each do |user|
     )
   end
 end
+
+naakul = User.find_by(email: "naakul@lewagon.com")
+skills = ['Ruby', 'JavaScript', 'AI Development', 'System Architecture', 'Mentorship']
+skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
+
+skill_objects.each do |skill|
+  UserSkill.create!(user: naakul, skill: skill, experience: 'Advanced', overall_rating: 5)
+end
+puts "Assigned skills to Naakul."
+
+# Create 1 Requests for Naakul's skills
+naakul.user_skills.each do |user_skill|
+  5.times do
+    request = Request.create!(user_id: User.all.sample.id, user_skill_id: user_skill.id, completed: true)
+    puts "Created request for Naakul's skill: #{user_skill.skill.name}"
+  end
+end
+
+# Create 5 Reviews for Naakul
+completed_requests = Request.where(user_skill: naakul.user_skills, completed: true).limit(5)
+review_contents = [
+  "Naakul provided excellent insights and guidance!",
+  "Fantastic experience working with Naakul, highly recommended.",
+  "Great mentor and software architect, really helped streamline my project!",
+  "Superb AI knowledge, helped me refine my algorithm efficiently.",
+  "One of the best experiences collaborating with Naakul!"
+]
+
+completed_requests.each_with_index do |request, index|
+  Review.create!(
+    request: request,
+    rating: 5,
+    content: review_contents[index],
+    title: "Review for #{request.user_skill.skill.name} service"
+  )
+  puts "Created review for request ##{request.id} (Skill: #{request.user_skill.skill.name})"
+end
+
+
 
 # 4. Hardcode Requests
 # requests = []
@@ -257,7 +307,7 @@ review_contents = [
 # iterate over all Requests - if completed, then create a review
 
 Request.all.each do |request|
-  if request.completed
+  if request.completed && request.user_skill.user.email != "naakul@lewagon.com"
     review_data = {
       title: "Review for #{request.user_skill.skill.name} service",
       content: review_contents.sample,
