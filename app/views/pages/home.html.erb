@@ -1,7 +1,18 @@
 <% if current_user %>
 
-  <%= render "shared/search" %>
+  <h2>About App</h2>
+  <div>
+    <li class="about-card card">
+      <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?</p>
+    </li>
+  </div>
 
+  <h2>Quick Search</h2>
+  <div class="skills-card card">
+    <% Skill.all.sample(10).each do |skill| %>
+      <span class="badge rounded-pill pill"><%= skill.name %></span>
+    <% end %>
+  </div>
 
   <div>
     ABOUT
@@ -20,6 +31,9 @@
     LIST OF SKILLS
   </div>
 
+
+
+  <h2>Trending now</h2>
 
   <% @user_skills.each do |user_skill| %>
     <div class="clickable-card">
@@ -52,17 +66,11 @@
   <% end %>
 
 <% else %>
-  <div class="container-home">
-    <div class="search">
-      <%= form_with url: user_skills_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], placeholder: "Search" %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
-    </div>
 
-    <div class="homepage-standard">
-      <%= image_tag "TGkoralle.png" %>
-      <p>Hello World! This is our home page with some information about the app.</p>
+
+    <%# <div class="homepage-standard"> %>
+      <%# <%= image_tag "TGkoralle.png" %>
+      <h1>Goodbye</h1>
 
       <div class="homepage-standard">
         <%= form_with url: user_skills_path, method: :get do %>

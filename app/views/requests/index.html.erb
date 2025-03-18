@@ -1,19 +1,40 @@
-<h1>here's your chats!</h1>
+<h1 class="chat-title">Your Chats!</h1>
 
-<div data-controller="toggle" class="">
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Your Requests</button>
-  <div data-toggle-target="togglableElement" class="d-none">
+<div data-controller="toggle" class="chat-container">
+
+  <!-- Button zum Anzeigen der Requests -->
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary chat-toggle-btn">
+    Your Requests
+  </button>
+
+  <!-- Requests als Taker -->
+  <div data-toggle-target="togglableElement" class="chat-section d-none">
+    <h2 class="chat-subtitle">Requests You Sent</h2>
     <% @requests_as_taker.each do |request| %>
       <% unless request.completed == true %>
-        <p>your request to  <%= link_to request.user_skill.user.name, request_path(request) %> for <%= request.user_skill.skill.name %></p>
+        <div class="chat-card">
+          <p class="chat-text">
+            Your request to <%= link_to request.user_skill.user.name, request_path(request), class: "chat-link" %>
+            for <br><strong><%= request.user_skill.skill.name %></strong>
+          </p>
+        </div>
       <% end %>
     <% end %>
   </div>
-  <div data-toggle-target="togglableElement">
+
+  <!-- Requests als Giver -->
+  <div data-toggle-target="togglableElement" class="chat-section">
+    <h2 class="chat-subtitle">Requests You Received</h2>
     <% @requests_as_giver.each do |request| %>
       <% unless request.completed == true %>
-        <p>your request from  <%= link_to request.user.name, request_path(request) %> for <%= request.user_skill.skill.name %></p>
+        <div class="chat-card">
+          <p class="chat-text">
+            <%= link_to request.user.name, request_path(request), class: "chat-link" %> request
+            for <br><strong><%= request.user_skill.skill.name %></strong>
+          </p>
+        </div>
       <% end %>
     <% end %>
   </div>
+
 </div>
