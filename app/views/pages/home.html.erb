@@ -7,6 +7,7 @@
     </li>
   </div>
 
+
    <h2>Your Profile</h2>
   <div  class="profile-card card">
     <img> <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
@@ -26,7 +27,7 @@
   <h2>Trending now</h2>
 
   <% @user_skills.each do |user_skill| %>
-    <%= render "user_skills/user_skill", user_skill: user_skill %>
+    <%= render "user_skills/user_skill", user_skill: user_skill, details: false%>
   <% end %>
 
 <% else %>
