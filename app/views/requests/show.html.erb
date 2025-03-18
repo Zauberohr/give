@@ -2,7 +2,8 @@
 <div class="container chat">
 
   <button>CANCEL</button>
-  <%= link_to "COMPLETE", completed_path(@request), data: {turbo_method: :patch}%>
+
+  <%= link_to "COMPLETE", completed_path(@request), data: {turbo_method: :patch} %>
 
   <div class="d-flex justify-content-between">
   <h1 class="request-header">Your Request for <%= @request.user_skill.skill.name %></h1>

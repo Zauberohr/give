@@ -21,3 +21,7 @@
     <div>
         <%= @user.skills.map(&:name).join(", ") %>
     </div>
+
+    <div>
+        <strong>Balance:</strong> <%= @user.balance %> credits
+    </div>
