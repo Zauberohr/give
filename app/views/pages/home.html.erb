@@ -2,6 +2,25 @@
 
   <%= render "shared/search" %>
 
+
+  <div>
+    ABOUT
+  </div>
+
+  <div>
+    <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
+       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <h3>👋<%= @user.name %></h3>
+    <li>📍<%= @user.city %></li>
+    <li>🪄<%= @user.skills.map(&:name).join(", ") %></li>
+    <li>🪙<%= @user.balance %> credits</li>
+  </div>
+
+  <div>
+    LIST OF SKILLS
+  </div>
+
+
   <% @user_skills.each do |user_skill| %>
     <div class="clickable-card">
       <%= link_to user_skill_path(user_skill) do %>

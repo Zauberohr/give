@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(5)
+    @user = current_user
   end
 
 
