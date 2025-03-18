@@ -1,7 +1,7 @@
 .navbar-default {
   flex-direction: row-reverse;
   justify-content: space-between;
-  background: lightcoral;
+  background: transparent;
   position: fixed;
   top: 0;
   left: 0;
@@ -24,5 +24,47 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 23px;
+  margin-top: 80px;
+}
+/* Untere Navbar Styling */
+/* Untere Navbar mit abgerundeten Ecken und Abstand vom Rand */
+.navbar-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: lightcoral;
+  position: fixed;
+  bottom: 15px; /* Löst sie vom Rand */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Verkleinert sie, damit sie nicht bis zum Rand reicht */
+  height: 60px;
+  z-index: 1000;
+  padding: 10px 0;
+  border-radius: 20px; /* Abrundung */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Leichter Schatten für schwebenden Effekt */
+}
+
+/* Jeder Button nimmt gleich viel Platz ein */
+.bottom-nav-item {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Größe und Styling der Icons */
+.nav-icon {
+  width: 30px; /* Falls du eine andere Größe brauchst, anpassen */
+  height: auto;
+  filter: brightness(0) invert(1); /* Macht Icons weiß, falls nötig */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hover-Effekt für Animation */
+.bottom-nav-item:hover .nav-icon {
+  transform: scale(1.1); /* Vergrößert das Icon leicht */
 }
