@@ -1,23 +1,17 @@
 <% if current_user %>
 
 
-<div class="search-container">
-  <%= simple_form_for :search, url: user_skills_path, method: :get, html: { class: "search-form form-horizontal" } do |f| %>
-    <div class="search-wrapper">
-      <%= f.input :query, label: false, collection: Skill.all, input_html: { data: { controller: "tom-select" }, class: "search-input" } %>
-      <%= f.submit "Search", class: "search-button" %>
-    </div>
-  <% end %>
-</div>
+<%= render "shared/search" %>
 
 
 
 <% @user_skills.each do |user_skill| %>
   <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
     <li class="card">
-      <h1 class="user_skill"><%= user_skill.user.name.capitalize %></h1>
+      <h1 class="user_skill"><%= user_skill.user.name.present? ? user_skill.user.name.capitalize : user_skill.user.email.split("@").first.capitalize %></h1>
       <h6><%= user_skill.user.city %></h6>
       <h4><%= user_skill.skill.name %></h4>
+      <%= cl_image_tag user_skill.user.photo.key, class: "rounded-image", alt: "user profile picture" if user_skill.user.photo.attached? %>
     </li><br>
   </div>
   <%end%>

@@ -18,19 +18,13 @@ Rails.application.routes.draw do
   # Independent request route for displaying a request (request detail page)
   resources :requests, only: [:index, :show] do
     # Route for Messages / CHAT
+    resources :reviews, only: [:new, :create]
     resources :messages, only: [:create]
   end
 
+  patch "completed/:id", to: "requests#completed", as: :completed
   # Defines the root path route ("/")
   # root "posts#index"
   resources :user_skills, only: [:index, :show]
   resources :users, only: [:show]
-  
-  resources :users, only: [:show] do
-    get 'reviews', to: 'reviews#show'
-  end
-
-  resources :requests do
-    resources :reviews, only: [:new, :create]
-  end
 end
