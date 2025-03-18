@@ -1,29 +1,37 @@
+<!-- Obere fixierte Navbar mit Button-GIVE -->
 <div class="navbar navbar-expand-sm navbar-light navbar-default <%= "navbar-#{@role}" if @role %>">
-
-    <%# Give Button always Home %>
-    <div class="button-GIVE">
-      <%= link_to root_path, class: "navbar-brand" do %>
+  <div class="button-GIVE">
+    <%= link_to root_path, class: "navbar-brand" do %>
       <% if @role == :taker %>
-        <%= image_tag("T_weiß.png")%>
+        <%= image_tag("T_weiß.png") %>
       <% elsif @role == :giver %>
-        <%= image_tag("G_weiß.png")%>
-        <% else %>
-          <%= image_tag("GT_weiß.png")%>
-       <% end %>
+        <%= image_tag("G_weiß.png") %>
+      <% else %>
+        <%= image_tag("GT_weiß.png") %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <%= image_tag "Profil_Button_standard.png", class: "avatar" %>
-    </a>
-
+  <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+  </a>
 </div>
 
-<div class="collapse navbar-dropdown-menu" id="collapseExample">
-    <%= link_to "Your Profile", dashboard_path, class: "menu-item" %>
-    <%= link_to "Your Request", requests_path, class: "menu-item" %>
-    <%= link_to "Your Skills", root_path, class: "menu-item" %>
-    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
 
+<!-- Untere fixierte Navbar mit 4 Buttons -->
+<div class="navbar-bottom">
+  <%= link_to root_path, class: "bottom-nav-item" do %>
+    <%= image_tag "home.png", class: "nav-icon" %>
+  <% end %>
 
+   <div class="bottom-nav-item">
+    <%= image_tag "search.png", class: "nav-icon" %>
+  </div>
+
+  <%= link_to requests_path, class: "bottom-nav-item" do %>
+    <%= image_tag "chat.png", class: "nav-icon" %>
+  <% end %>
+
+  <%= link_to dashboard_path, class: "bottom-nav-item" do %>
+    <%= image_tag "person.png", class: "nav-icon" %>
+  <% end %>
 </div>
