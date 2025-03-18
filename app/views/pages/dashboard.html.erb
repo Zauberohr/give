@@ -1,7 +1,6 @@
 <div class=main.cointainer>
 
 <div style="text-align: center; margin-top: 20px;">
-
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
     <% else %>

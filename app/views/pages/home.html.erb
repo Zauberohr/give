@@ -7,9 +7,9 @@
     </li>
   </div>
 
+   <h2>Your Info</h2>
   <div  class="profile-card card">
-    <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
-       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img> <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
     <h3>👋<%= @user.name %></h3>
     <p>📍<%= @user.city %></p>
     <p>🪄<%= @user.skills.map(&:name).join(", ") %></p>
@@ -19,7 +19,7 @@
   <h2>Quick Search</h2>
   <div class="skills-card card">
     <% Skill.all.sample(10).each do |skill| %>
-      <span class="badge rounded-pill pill"><%= skill.name %></span>
+      <span class="badge rounded-pill pill"><%= link_to skill.name, user_skills_path %></span>
     <% end %>
   </div>
 
