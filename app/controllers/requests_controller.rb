@@ -25,13 +25,16 @@ class RequestsController < ApplicationController
 
   def completed
     @request.update(completed: true)
-    @user = current_user
+    @user = current_user.reload
     @user.balance -= 10
     @user.save!
+
     @creditor = @request.user_skill.user
     @creditor.balance += 10
     @creditor.save
+
     redirect_to new_request_review_path(@request), notice: "Request completed"
+
   end
 
   private

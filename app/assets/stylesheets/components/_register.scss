@@ -1,0 +1,15 @@
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 15px;
+  // border: none;
+  border-radius: 15; /* Keine abgerundeten Ecken für volle Breite */
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.logout-button:hover {
+  background-color: lightcoral;
+}

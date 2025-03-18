@@ -1,41 +1,82 @@
 <% if current_user %>
 
-
-<%= render "shared/search" %>
-
-
-
-<% @user_skills.each do |user_skill| %>
-  <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
-    <li class="card">
-      <h1 class="user_skill"><%= user_skill.user.name.present? ? user_skill.user.name.capitalize : user_skill.user.email.split("@").first.capitalize %></h1>
-      <h6><%= user_skill.user.city %></h6>
-      <h4><%= user_skill.skill.name %></h4>
-      <%= cl_image_tag user_skill.user.photo.key, class: "rounded-image", alt: "user profile picture" if user_skill.user.photo.attached? %>
-    </li><br>
+  <h2>About App</h2>
+  <div>
+    <li class="about-card card">
+      <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?</p>
+    </li>
   </div>
-  <%end%>
-<% end %>
-<% else %>
-<div class="container-home">
-  <div class="search">
-  <%= form_with url: user_skills_path , :method => :get do %>
-    <%= text_field_tag :query,
-            params[:query],
-            placeholder: "Search"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+
+  <h2>Quick Search</h2>
+  <div class="skills-card card">
+    <% Skill.all.sample(10).each do |skill| %>
+      <span class="badge rounded-pill pill"><%= skill.name %></span>
     <% end %>
-</div>
+  </div>
 
-<div class="homepage-standard">
-<%= image_tag "TGkoralle.png" %>
+  <div>
+    ABOUT
+  </div>
 
-  <p>Hello World! this is our Home page with some infromation about the app.</p>
-<div class="homepage-standard">
-<%= form_with url: user_skills_path , :method => :get do %>
-  <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
+  <div>
+    <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
+       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <h3>👋<%= @user.name %></h3>
+    <li>📍<%= @user.city %></li>
+    <li>🪄<%= @user.skills.map(&:name).join(", ") %></li>
+    <li>🪙<%= @user.balance %> credits</li>
+  </div>
+
+  <div>
+    LIST OF SKILLS
+  </div>
+
+
+
+  <h2>Trending now</h2>
+
+  <% @user_skills.each do |user_skill| %>
+    <div class="clickable-card">
+      <%= link_to user_skill_path(user_skill) do %>
+        <li class="card">
+          <div class="card-content">
+
+            <!-- Bild links -->
+            <div class="card-image">
+              <% if user_skill.user.photo.attached? %>
+                <%= cl_image_tag user_skill.user.photo.key, class: "rounded-image", alt: "user profile picture" %>
+              <% else %>
+                <%= image_tag "default-profile.png", class: "rounded-image", alt: "Default user profile picture" %>
+              <% end %>
+            </div>
+
+            <!-- Text rechts -->
+            <div class="card-text">
+              <h1 class="user_skill">
+                <%= user_skill.user.name.present? ? user_skill.user.name.capitalize : user_skill.user.email.split("@").first.capitalize %>
+              </h1>
+              <h6><%= user_skill.user.city %></h6>
+              <h4><%= user_skill.skill.name %></h4>
+            </div>
+
+          </div>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+
+<% else %>
+
+
+    <%# <div class="homepage-standard"> %>
+      <%# <%= image_tag "TGkoralle.png" %>
+      <h1>Goodbye</h1>
+
+      <div class="homepage-standard">
+        <%= form_with url: user_skills_path, method: :get do %>
+          <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
-</div>
-<% end %>
-<%# Link to a chat page – here using a static request id (1). Replace with a dynamic value if needed. %>
