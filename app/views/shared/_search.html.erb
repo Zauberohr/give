@@ -1,0 +1,8 @@
+<div class="search-container">
+  <%= simple_form_for :search, url: user_skills_path, method: :get, html: { class: "search-form form-horizontal", id: "skill-search" } do |f| %>
+    <div class="search-wrapper">
+      <%= f.input :query, label: false, collection: Skill.all, input_html: { data: { controller: "tom-select" }, class: "search-input" } %>
+      <%= f.submit "Search", class: "search-button" %>
+    </div>
+  <% end %>
+</div>
