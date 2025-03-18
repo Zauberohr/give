@@ -5,6 +5,20 @@
     <% if @query.present? %>
     <% @user_skills.each do |user_skill| %>
       <%= render "user_skill", user_skill: user_skill %>
+      <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
+        <li class="card">
+          <h1 class="user_skill"><%= user_skill.user.name.capitalize %> <%= '⭐️' * user_skill.overall_rating %></h1>
+          <h6><%= user_skill.user.city %></h6>
+          <% user_skill.user.user_skills.each do |skill| %>
+            <%= skill.skill.name %><%= ", " unless skill == user_skill.user.user_skills.last %>
+          <% end %>
+          <br>
+
+
+        </li><br>
+      <% end %>
+      </div>
+
     <% end %>
     <% else %>
     <p>Sorry! please enter something to search</p>
