@@ -1,3 +1,5 @@
+
+
 <!-- Obere fixierte Navbar mit Button-GIVE -->
 <div class="navbar navbar-expand-sm navbar-light navbar-default <%= "navbar-#{@role}" if @role %>">
   <div class="button-GIVE">
@@ -18,6 +20,8 @@
 
 
 <!-- Untere fixierte Navbar mit 4 Buttons -->
+<div class="navbar-overlay"></div> <!-- Hintergrund abdunkeln -->
+<%# <div class="navbar-bottom"> %>
 <div class="navbar-bottom">
   <%= link_to root_path, class: "bottom-nav-item" do %>
     <%= image_tag "home.png", class: "nav-icon" %>
@@ -36,4 +40,5 @@
   <%= link_to dashboard_path, class: "bottom-nav-item" do %>
     <%= image_tag "person.png", class: "nav-icon" %>
   <% end %>
+</div>
 </div>

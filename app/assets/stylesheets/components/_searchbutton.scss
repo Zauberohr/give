@@ -7,9 +7,6 @@
   margin: auto;
 }
 
-
-
-
 .search_query {
   flex-grow: 1;
   // padding: 10px;
@@ -67,4 +64,8 @@
 .ts-dropdown {
   width: 100%;
   position: relative;
+}
+
+.buttonsrequestcontainer {
+  display: flex;
 }

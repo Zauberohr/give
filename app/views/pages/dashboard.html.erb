@@ -1,8 +1,12 @@
 <div class=main.cointainer>
 
 <div style="text-align: center; margin-top: 20px;">
-  <img  alt="Profile Picture"
-       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
+    <% else %>
+      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg", class: "rounded-image" %>
+    <% end %>
 </div>
     <h1 div>
         <%= @user.name %> from <%= @user.city %>
@@ -22,15 +26,8 @@
         <strong>Balance:</strong> <%= @user.balance %> credits
     </div>
 
-<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout-button" %>
+<%= button_to destroy_user_session_path, method: :delete, class: "logout-button" do %>
+  <h3>LOGOUT</h3>
+<% end %>
 
-</div>
-  <!-- EMAIL
-
-    <div>
-
-        <strong>Balance:</strong> <%= @user.balance %> credits
-    </div>
-
-        <%= @user.email %>
 </div>

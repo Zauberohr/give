@@ -3,12 +3,17 @@
 <div data-controller="toggle" class="chat-container">
 
   <!-- Button zum Anzeigen der Requests -->
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary chat-toggle-btn">
-    Your Requests
-  </button>
+  <div class="buttonsrequestcontainer">
+    <button data-action="click->toggle#fireSent" data-toggle-target="sentButton" class="btn btn-primary chat-toggle-btn">
+      Your Requests
+    </button>
+    <button data-action="click->toggle#fireReceived" data-toggle-target="receivedButton" class="btn btn-outline-primary chat-toggle-btn">
+      Received Requests
+    </button>
+  </div>
 
-  <!-- Requests als Taker -->
-  <div data-toggle-target="togglableElement" class="chat-section d-none">
+  <!-- Requests as Taker -->
+  <div data-toggle-target="sent" class="chat-section d-none">
     <h2 class="chat-subtitle">Requests You Sent</h2>
     <% @requests_as_taker.each do |request| %>
       <% unless request.completed == true %>
@@ -23,7 +28,7 @@
   </div>
 
   <!-- Requests als Giver -->
-  <div data-toggle-target="togglableElement" class="chat-section">
+  <div data-toggle-target="received" class="chat-section">
     <h2 class="chat-subtitle">Requests You Received</h2>
     <% @requests_as_giver.each do |request| %>
       <% unless request.completed == true %>

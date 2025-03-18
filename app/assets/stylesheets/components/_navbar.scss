@@ -8,12 +8,6 @@
   width: 100%;
   z-index: 1000
 }
-.navbar-giver {
-  background: lightcoral
-}
-.navbar-taker {
-  background: lightcoral
-}
 
 .navbar-default .navbar-brand img {
   width: 75px;
@@ -28,6 +22,19 @@
 }
 /* Untere Navbar Styling */
 /* Untere Navbar mit abgerundeten Ecken und Abstand vom Rand */
+/* Overlay für den Hintergrund */
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Leicht graue Überlagerung */
+  z-index: 999; /* Unter der Navbar, aber über dem Content */
+  display: none; /* Standardmäßig unsichtbar */
+}
+
+/* Deine bestehende Navbar */
 .navbar-bottom {
   display: flex;
   justify-content: space-around;
@@ -37,12 +44,14 @@
   bottom: 15px; /* Löst sie vom Rand */
   left: 50%;
   transform: translateX(-50%);
-  width: 90%; /* Verkleinert sie, damit sie nicht bis zum Rand reicht */
+  width: 90%;
   height: 60px;
-  z-index: 1000;
+  z-index: 1000; /* Über dem Overlay */
   padding: 10px 0;
-  border-radius: 20px; /* Abrundung */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Leichter Schatten für schwebenden Effekt */
+  border-radius: 20px;
+  box-shadow: 0px 0px 130px rgba(0, 0, 0, 4.8);
+  background: linear-gradient(to bottom right,
+                    lightcoral, lightyellow);
 }
 
 /* Jeder Button nimmt gleich viel Platz ein */
