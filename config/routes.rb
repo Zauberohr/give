@@ -27,5 +27,4 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :user_skills, only: [:index, :show]
   resources :users, only: [:show]
-
 end
