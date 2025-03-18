@@ -1,0 +1,21 @@
+<h1>Write a Review for Request #<%= @request.id %></h1>
+
+<%= simple_form_for [@request, @review] do |f| %>
+  <div class="form-group">
+    <%= f.input :title, label: "Review Title", required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :rating, label: "Rating (1-5)", as: :select, collection: (1..5).to_a, required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :content, label: "Your Review", required: true, class: "form-control" %>
+  </div>
+
+ <div class="form-actions">
+  <%= f.submit "Submit Review", class: "btn btn-primary", formaction: root_path %>
+</div>
+<% end %>
+
+<button class="btn btn-info">Back to Requests</button>
