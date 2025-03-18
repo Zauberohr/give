@@ -14,8 +14,16 @@
   </div>
 
  <div class="form-actions">
-  <%= f.submit "Submit Review", class: "btn btn-primary", formaction: root_path %>
+  <%= f.submit "Submit Review", class: "btn btn-primary" %>
 </div>
 <% end %>
 
 <button class="btn btn-info">Back to Requests</button>
+
+
+<script>
+  function showSuccessPopup() {
+    alert("Review successfully created!");
+    return true; // Allow form submission to continue
+  }
+</script>
