@@ -6,9 +6,7 @@ class PagesController < ApplicationController
     @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(5)
     @user = current_user
     @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(10)
-
   end
-
 
   def dashboard
     @user = current_user
@@ -20,5 +18,4 @@ class PagesController < ApplicationController
 
   def search
   end
-
 end
