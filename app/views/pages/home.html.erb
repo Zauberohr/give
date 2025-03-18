@@ -33,17 +33,11 @@
   <% end %>
 
 <% else %>
-  <div class="container-home">
-    <div class="search">
-      <%= form_with url: user_skills_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], placeholder: "Search" %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
-    </div>
 
-    <div class="homepage-standard">
-      <%= image_tag "TGkoralle.png" %>
-      <p>Hello World! This is our home page with some information about the app.</p>
+
+    <%# <div class="homepage-standard"> %>
+      <%# <%= image_tag "TGkoralle.png" %>
+      <h1>Goodbye</h1>
 
       <div class="homepage-standard">
         <%= form_with url: user_skills_path, method: :get do %>
