@@ -1,10 +1,6 @@
 <!-- app/views/requests/show.html.erb -->
 <div class="container chat">
 
-  <button>CANCEL</button>
-
-  <%= link_to "COMPLETE", completed_path(@request), data: {turbo_method: :patch} %>
-
   <div class="message-button d-flex justify-content-between">
   <button class="btn btn-danger">CANCEL</button>
   <%= link_to "COMPLETE", completed_path(@request), data: {turbo_method: :patch}, class: "message-a btn btn-success"%>
