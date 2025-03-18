@@ -75,7 +75,7 @@ puts "Skills created."
 ruby_skill = Skill.find_or_create_by(name: "Ruby")
 
 # Assign Ruby skill to 5 users
-ruby_users = User.limit(5)
+ruby_users = User.where.not(email: "naakul@lewagon.com").limit(5)
 ruby_users.each do |user|
   UserSkill.create!(user: user, skill: ruby_skill, experience: 'Advanced', overall_rating: 5)
   puts "Assigned Ruby skill to #{user.name}."
