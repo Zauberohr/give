@@ -26,7 +26,7 @@
   <h2>Trending now</h2>
 
   <% @user_skills.each do |user_skill| %>
-    <%= render "user_skills/user_skill", user_skill: user_skill %>
+    <%= render "user_skills/user_skill", user_skill: user_skill, details: false%>
   <% end %>
 
 <% else %>
