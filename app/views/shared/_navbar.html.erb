@@ -24,7 +24,9 @@
   <% end %>
 
    <div class="bottom-nav-item">
+    <%= link_to search_path, class: "bottom-nav-item" do %>
     <%= image_tag "search.png", class: "nav-icon" %>
+    <% end %>
   </div>
 
   <%= link_to requests_path, class: "bottom-nav-item" do %>

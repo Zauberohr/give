@@ -1,7 +1,20 @@
 <% if current_user %>
 
-  <%= render "shared/search" %>
+  <h2>About App</h2>
+  <div>
+    <li class="about-card card">
+      <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?</p>
+    </li>
+  </div>
 
+  <h2>Quick Search</h2>
+  <div class="skills-card card">
+    <% Skill.all.sample(10).each do |skill| %>
+      <span class="badge rounded-pill pill"><%= skill.name %></span>
+    <% end %>
+  </div>
+
+  <h2>Trending now</h2>
   <% @user_skills.each do |user_skill| %>
     <div class="clickable-card">
       <%= link_to user_skill_path(user_skill) do %>
