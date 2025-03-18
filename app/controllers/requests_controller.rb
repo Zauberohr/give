@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_user_skill, only: [:create]
   before_action :set_request, only: [:completed]
-  
+
   def index
     @requests_as_taker = current_user.requests
     @requests_as_giver = current_user.requests_as_giver
@@ -32,6 +32,9 @@ class RequestsController < ApplicationController
     @creditor = @request.user_skill.user
     @creditor.balance += 10
     @creditor.save
+
+    redirect_to new_request_review_path(@request), notice: "Request completed"
+
   end
 
   private

@@ -7,10 +7,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :skills, through: :user_skills
-  has_many :reviews
   has_one_attached :photo
   has_many :requests
   has_many :requests_as_giver, through: :user_skills, source: :requests
+
+  has_many :reviews, through: :requests
+
 
   private
 
