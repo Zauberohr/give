@@ -10,12 +10,13 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :requests
   has_many :requests_as_giver, through: :user_skills, source: :requests
+
   has_many :reviews, through: :requests
+
 
   private
 
   def add_credit
     self.balance = 100
   end
-  
 end
