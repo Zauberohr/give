@@ -71,15 +71,26 @@ skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
 puts "Skills created."
 
-# Create Ruby skill
+# # Create Ruby skill
 ruby_skill = Skill.find_or_create_by(name: "Ruby")
 
-# Assign Ruby skill to 5 users
-ruby_users = User.where.not(email: "naakul@lewagon.com").limit(5)
+# Assign Ruby skill to 5 users without duplication
+ruby_users = User.where.not(email: "nakul@lewagon.com").limit(5)
 ruby_users.each do |user|
-  UserSkill.create!(user: user, skill: ruby_skill, experience: 'Advanced', overall_rating: 5)
-  puts "Assigned Ruby skill to #{user.name}."
+  unless UserSkill.exists?(user: user, skill: ruby_skill)
+    UserSkill.create!(user: user, skill: ruby_skill, experience: 'Advanced', overall_rating: 5)
+    puts "Assigned Ruby skill to #{user.name}."
+  else
+    puts "Skipped assigning Ruby skill to #{user.name} (already assigned)."
+  end
 end
+
+# # Assign Ruby skill to 5 users
+# ruby_users = User.where.not(email: "naakul@lewagon.com").limit(5)
+# ruby_users.each do |user|
+#   UserSkill.create!(user: user, skill: ruby_skill, experience: 'Advanced', overall_rating: 5)
+#   puts "Assigned Ruby skill to #{user.name}."
+# end
 
 # 3. Assign Skills to Users through UserSkilluser_skills =
 # user_skills = {

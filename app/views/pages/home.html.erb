@@ -26,33 +26,7 @@
   <h2>Trending now</h2>
 
   <% @user_skills.each do |user_skill| %>
-    <div class="clickable-card">
-      <%= link_to user_skill_path(user_skill) do %>
-        <li class="card">
-          <div class="card-content">
-
-            <!-- Bild links -->
-            <div class="card-image">
-              <% if user_skill.user.photo.attached? %>
-                <%= cl_image_tag user_skill.user.photo.key, class: "rounded-image", alt: "user profile picture" %>
-              <% else %>
-                <%= image_tag "default-profile.png", class: "rounded-image", alt: "Default user profile picture" %>
-              <% end %>
-            </div>
-
-            <!-- Text rechts -->
-            <div class="card-text">
-              <h1 class="user_skill">
-                <%= user_skill.user.name.present? ? user_skill.user.name.capitalize : user_skill.user.email.split("@").first.capitalize %>
-              </h1>
-              <h6><%= user_skill.user.city %></h6>
-              <h4><%= user_skill.skill.name %></h4>
-            </div>
-
-          </div>
-        </li>
-      <% end %>
-    </div>
+    <%= render "user_skills/user_skill", user_skill: user_skill %>
   <% end %>
 
 <% else %>

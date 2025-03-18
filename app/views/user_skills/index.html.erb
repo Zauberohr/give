@@ -4,6 +4,7 @@
   <div class="userskill container">
     <% if @query.present? %>
     <% @user_skills.each do |user_skill| %>
+      <%= render "user_skill", user_skill: user_skill %>
       <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
         <li class="card">
           <h1 class="user_skill"><%= user_skill.user.name.capitalize %> <%= '⭐️' * user_skill.overall_rating %></h1>
@@ -17,6 +18,7 @@
         </li><br>
       <% end %>
       </div>
+
     <% end %>
     <% else %>
     <p>Sorry! please enter something to search</p>

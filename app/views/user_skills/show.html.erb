@@ -15,9 +15,15 @@
     <% end %>
   </div>
 
-  <!-- Skills Section -->
+   <!-- Skills Section -->
   <div class="skills">
-    <p><strong><%= @user_skill.skill.name %></strong> - <%= @user_skill.experience %> - Rating: <%= @user_skill.overall_rating %>/5</p>
+    <div class="card skill-card">
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= @user_skill.skill.name %></strong></h5>
+        <p class="card-text">Experience: <%= @user_skill.experience %></p>
+        <p class="card-text">Rating: <span class="rating"><%= @user_skill.overall_rating %>/5</span></p>
+      </div>
+    </div>
     <% @user_skills_sorted.each do |user_skill| %>
       <p><strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5</p>
     <% end %>
