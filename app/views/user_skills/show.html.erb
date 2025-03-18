@@ -17,7 +17,7 @@
 
   <!-- Skills Section -->
   <div class="skills">
-    <p><strong><%= @user_skill.skill.name.upcase %></strong> - <%= @user_skill.experience %> - Rating: <%= @user_skill.overall_rating %>/5</p>
+    <p><strong><%= @user_skill.skill.name %></strong> - <%= @user_skill.experience %> - Rating: <%= @user_skill.overall_rating %>/5</p>
     <% @user_skills_sorted.each do |user_skill| %>
       <p><strong><%= user_skill.skill.name %></strong> - <%= user_skill.experience %> - Rating: <%= user_skill.overall_rating %>/5</p>
     <% end %>

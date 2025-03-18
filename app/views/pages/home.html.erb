@@ -3,8 +3,17 @@
   <h2>About App</h2>
   <div>
     <li class="about-card card">
-      <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?</p>
+      <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?
     </li>
+  </div>
+
+  <div  class="profile-card card">
+    <img src="https://tse4.mm.bing.net/th?id=OIP.uUxS_4vd-3o24MwLBT7HSwHaG3&pid=Api&P=0&h=180" alt="Profile Picture" 
+       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <h3>👋<%= @user.name %></h3>
+    <p>📍<%= @user.city %></p>
+    <p>🪄<%= @user.skills.map(&:name).join(", ") %></p>
+    <p>🪙<%= @user.balance %> credits</p>
   </div>
 
   <h2>Quick Search</h2>
@@ -15,6 +24,7 @@
   </div>
 
   <h2>Trending now</h2>
+
   <% @user_skills.each do |user_skill| %>
     <div class="clickable-card">
       <%= link_to user_skill_path(user_skill) do %>
