@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  patch "completed/:id", to: "requests#completed", as: :completed
   # Defines the root path route ("/")
   # root "posts#index"
   resources :user_skills, only: [:index, :show]

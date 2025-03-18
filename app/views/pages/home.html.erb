@@ -15,7 +15,7 @@
 <% @user_skills.each do |user_skill| %>
   <div class="clickable-card"><%= link_to user_skill_path(user_skill) do %>
     <li class="card">
-      <h1 class="user_skill"><%= user_skill.user.name.capitalize %></h1>
+      <h1 class="user_skill"><%= user_skill.user.name.present? ? user_skill.user.name.capitalize : user_skill.user.email.split("@").first.capitalize %></h1>
       <h6><%= user_skill.user.city %></h6>
       <h4><%= user_skill.skill.name %></h4>
       <%= cl_image_tag user_skill.user.photo.key, class: "rounded-image", alt: "user profile picture" if user_skill.user.photo.attached? %>
