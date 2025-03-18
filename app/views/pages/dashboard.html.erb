@@ -1,8 +1,7 @@
 <div class=main.cointainer>
 
 <div style="text-align: center; margin-top: 20px;">
-  <img  alt="Profile Picture"
-       style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+  <img> <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
 </div>
     <h1 div>
         <%= @user.name %> from <%= @user.city %>
