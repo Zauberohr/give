@@ -6,7 +6,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :rating, label: "Rating (1-5)", as: :select, collection: (1..5).map { |n| '⭐️' * n }, required: true, class: "form-control" %>
+    <%= f.input :rating, label: "Rating (1-5)", as: :select, collection: (1..5).map { |n| [n, '⭐️' * n] }, label_method: :second, value_method: :first, required: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
