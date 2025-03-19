@@ -19,7 +19,7 @@ export default class extends Controller {
         title: "💰 Transaction Complete!",
         text: message,
         icon: "success",
-        timer: 3000,
+        timer: 5000,
         showConfirmButton: false,
       });
 
@@ -27,6 +27,7 @@ export default class extends Controller {
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 },
+        zIndex: 1070,
       });
 
       console.log(this.soundValue);
