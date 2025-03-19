@@ -2,11 +2,11 @@
   background: #fff;
   border: 1px solid black;
   border-radius: 25px;
-  padding: 1px;
   width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   margin-bottom: 40px;
+  padding: 10px;
 }
 
 .clickable-card a {
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center; /* Sorgt dafür, dass Bild und Text auf einer Linie sind */
   gap: 15px; /* Abstand zwischen Bild und Text */
-  padding: 10px;
+  // padding: 10px;
 }
 
 /* Bild links mit fester Größe */
@@ -67,7 +67,8 @@
 
 .about-card {
   padding: 10px;
-  background: magenta;
+  background: linear-gradient(to bottom right,
+                   orange, magenta);
 }
 
 .profile-card {
@@ -87,6 +88,7 @@
   justify-content: space-between;
   align-items: center;
   width: 80%;
+  filter: drop-shadow(4px 4px 6px rgba(255, 255, 127, 0.8));
 }
 
 .profile-header h3 {
