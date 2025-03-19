@@ -1,0 +1,26 @@
+.buttonsafterreview {
+  display: flex;
+  gap: 10px; /* Abstand zwischen den Buttons */
+  justify-content: center; /* Falls die Buttons zentriert sein sollen */
+  align-items: center; /* Vertikale Ausrichtung */
+}
+
+.form-actions {
+  flex: 1;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.buttonreview {
+  border: 2px solid black;
+  border-radius: 15px;
+
+}
+
+.btn-info {
+  flex: 1;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 15px;
+}

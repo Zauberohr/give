@@ -1,7 +1,7 @@
 <%= render "shared/search" %>
 
 <ul class="style">
-  <div class="userskill container">
+  <div class="userskillgit">
     <% if @query.present? %>
     <% @user_skills.each do |user_skill| %>
       <%= render "user_skill", user_skill: user_skill, details: true %>
