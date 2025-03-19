@@ -131,6 +131,8 @@
   margin-top: 10px; /* Abstand nach oben */
   background-color: yellow;
   margin-bottom: 0rem !important;
+  padding-left: 114px;
+  padding-right: 114px;
 }
 
 .balancecredits {
@@ -141,4 +143,12 @@
   display: flex; /* Damit der Rahmen nur den Text umschließt */
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.request-link {
+  text-decoration: none;
+}
+
+.home-credit-link {
+  text-decoration: none;
 }
