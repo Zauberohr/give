@@ -3,9 +3,13 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(5)
     @user = current_user
-    @user_skills = UserSkill.all.uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(10)
+    naakul = User.find_by_email("naakul@lewagon.com")
+    bilal = User.find_by_email("bilal@lewagon.com")
+    @user_skills = UserSkill.where.not(user: [naakul, bilal]).uniq { |user_skill| user_skill.skill_id }.uniq { |user_skill| user_skill.user_id }.sample(10)
+    @skills = Skill.all.sample(10)
+
+
   end
 
   def dashboard
