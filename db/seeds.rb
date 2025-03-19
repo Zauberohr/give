@@ -167,7 +167,7 @@ end
 User.where.not(email: "naakul@lewagon.com").each do |user|
   user_experience = ["Beginner", "Intermidiate", "Advanced"]
   rand(3..5).times do
-    UserSkill.create!(
+    UserSkill.create(
       user: user,
       skill: Skill.all.sample,
       experience: user_experience.sample,
@@ -181,7 +181,7 @@ skills = ['Ruby', 'JavaScript', 'AI Development', 'System Architecture', 'Mentor
 skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
 skill_objects.each do |skill|
-  UserSkill.create!(user: naakul, skill: skill, experience: 'Advanced', overall_rating: 5)
+  UserSkill.create(user: naakul, skill: skill, experience: 'Advanced', overall_rating: 5)
 end
 puts "Assigned skills to Naakul."
 

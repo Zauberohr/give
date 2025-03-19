@@ -1,12 +1,13 @@
 <div class=main.cointainer>
 
-<div style="text-align: center; margin-top: 20px;">
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
-    <% else %>
-      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg", class: "rounded-image" %>
-    <% end %>
+<div class=profilpicture margin-top: 20px;>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
+  <% else %>
+    <%= image_tag "Profil_Button_standard.png", class: "rounded-image" %>
+  <% end %>
 </div>
+
     <h1 div>
         <%= @user.name %> from <%= @user.city %>
     </div>
@@ -21,12 +22,12 @@
   <% end %>
 </div>
 
-    <div>
-        <strong>Balance:</strong> <%= @user.balance %> credits
+    <div class="balancecredits">
+        <h1><strong>Balance:</strong><br> <%= @user.balance %> credits </h1>
     </div>
 
 <%= button_to destroy_user_session_path, method: :delete, class: "logout-button" do %>
-  <h3>LOGOUT</h3>
+  LOGOUT
 <% end %>
 
 </div>
