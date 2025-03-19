@@ -1,5 +1,7 @@
 .show-userfrom{
 text-align: center;
+margin-bottom: 50px;
+margin-top: 15px;
 }
 
 .show-profile-header {
@@ -14,6 +16,11 @@ text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 80px; /* Reduziere die Bildgröße */
+  height: 80px; /* Erhalte ein gleichmäßiges Quadrat */
+  border-radius: 50%; /* Falls es rund bleiben soll */
+  object-fit: cover; /* Stellt sicher, dass das Bild nicht verzerrt wird */
 }
 
 .show-skills-card {
@@ -27,7 +34,7 @@ text-align: center;
 }
 
 .show-skill-list {
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 10px;
   line-height: 1.1;
 }
