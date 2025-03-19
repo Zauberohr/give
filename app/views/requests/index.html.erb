@@ -15,7 +15,7 @@
   <!-- Requests as Taker -->
   <div data-toggle-target="sent" class="chat-section d-none">
     <h2 class="chat-subtitle">Requests You Sent</h2>
-    <% @requests_as_taker.sort_by(&:created_at).each do |request| %>
+    <% @requests_as_taker.order(created_at: :desc).each do |request| %>
       <% unless request.completed == true %><%= link_to request_path(request), class:"request-link" do %>
         <div class="chat-card">
           <p class="chat-text">
@@ -32,7 +32,7 @@
   <!-- Requests als Giver -->
   <div data-toggle-target="received" class="chat-section">
     <h2 class="chat-subtitle">Requests You Received</h2>
-    <% @requests_as_giver.sort_by(&:created_at).each do |request| %>
+    <% @requests_as_giver.order(created_at: :desc).each do |request| %>
       <% unless request.completed == true %><%= link_to request_path(request), class:"request-link" do %>
         <div class="chat-card">
           <p class="chat-text">

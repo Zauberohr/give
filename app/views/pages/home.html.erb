@@ -7,30 +7,29 @@
     </li>
   </div>
 
-
   <!-- Your Profile auf Startseite -->
- <h2>Your Profile</h2>
-<div class="profile-card card">
-  <!-- 1. Reihe: Username : Profilbild : User.city -->
-  <div class="profile-header">
-    <h3>👋 <%= @user.name %></h3>
-    <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
-    <h3>📍 <%= @user.city %></h3>
-  </div>
+  <h2>Your Profile</h2>
+  <div class="profile-card card">
+    <!-- 1. Reihe: Username : Profilbild : User.city -->
+    <div class="profile-header">
+      <h3>👋 <%= @user.name %></h3>
+      <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
+      <h3>📍 <%= @user.city %></h3>
+    </div>
 
-  <!-- 2. Reihe: Skills -->
-  <div class="profile-skills">
-    🪄 <%= @user.skills.map(&:name).join(", ") %>
-  </div>
+    <!-- 2. Reihe: Skills -->
+    <div class="profile-skills">
+      🪄 <%= @user.skills.map(&:name).join(", ") %>
+    </div>
 
-  <!-- 3. Reihe: Balance -->
-  <%= link_to dashboard_path do %>
-  <div class="profile-balance">
-    <%= @user.balance %> credits
+    <!-- 3. Reihe: Balance -->
+    <%= link_to dashboard_path, class:"home-credit-link" do %>
+      <div class="profile-balance">
+        <%= @user.balance %> credits
+      </div>
     <% end %>
   </div>
-</div>
-
+  <br>
   <h2>Quick Search</h2>
   <div class="skills-card card">
     <% Skill.all.sample(10).each do |skill| %>
@@ -44,17 +43,12 @@
   <% end %>
 
 <% else %>
-
-
-    <%# <div class="homepage-standard"> %>
-      <%# <%= image_tag "TGkoralle.png" %>
-      <h1>Goodbye</h1>
-
-      <div class="homepage-standard">
-        <%= form_with url: user_skills_path, method: :get do %>
-          <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
-        <% end %>
-      </div>
-    </div>
+  <%# <div class="homepage-standard"> %>
+  <%# <%= image_tag "TGkoralle.png" %>
+  <h1>Goodbye</h1>
+  <div class="homepage-standard">
+    <%= form_with url: user_skills_path, method: :get do %>
+      <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
+    <% end %>
   </div>
 <% end %>

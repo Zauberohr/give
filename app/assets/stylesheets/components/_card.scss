@@ -136,6 +136,8 @@
   margin-top: 10px; /* Abstand nach oben */
   background-color: yellow;
   margin-bottom: 0rem !important;
+  padding-left: 114px;
+  padding-right: 114px;
 }
 
 .balancecredits {
@@ -149,5 +151,9 @@
 }
 
 .request-link {
+  text-decoration: none;
+}
+
+.home-credit-link {
   text-decoration: none;
 }
