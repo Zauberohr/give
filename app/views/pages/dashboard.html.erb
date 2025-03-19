@@ -22,8 +22,8 @@
   <% end %>
 </div>
 
-    <div>
-        <h1><strong>Balance:</strong> <%= @user.balance %> credits </h1>
+    <div class="balancecredits">
+        <h1><strong>Balance:</strong><br> <%= @user.balance %> credits </h1>
     </div>
 
 <%= button_to destroy_user_session_path, method: :delete, class: "logout-button" do %>

@@ -1,6 +1,6 @@
 .card {
   background: #fff;
-  border: 1px solid lightcoral;
+  border: 1px solid black;
   border-radius: 25px;
   padding: 1px;
   width: 100%;
@@ -51,26 +51,99 @@
 
 .skills-card {
   display: block;
+  text-align: center;
   padding: 10px;
+  font-size: 25px;
 }
 
 .pill {
-  background-color: lightcoral;
-  padding: 7px;
+
+  background-color: #ff69b4;
+  padding: 7px 13px;
   margin: 3px;
+  font-size: 14px;
   a {
     text-decoration: none;
-    color: white;
+    color: yellow;
     font-weight: lighter;
+    font-weight: bold;
   }
 }
 
 .about-card {
   padding: 10px;
+  background: linear-gradient(to bottom right,
+  lightcoral, lightyellow);
 }
 
 .profile-card {
   display: flex;
+  flex-direction: column; /* Stellt sicher, dass die Reihenfolge eingehalten wird */
   align-items: center;
-  padding: 10px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 400px; /* Optionale Begrenzung der Breite */
+  margin: 0 auto; /* Zentriert die Card */
+}
+
+/* 1. Reihe: Username, Profilbild, City */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.profile-header h3 {
+  flex: 1;
+  text-align: center;
+  font-size: 23px;
+}
+
+.profile-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: yellow;
+}
+
+.profile-header h3 {
+  flex: 1;
+  text-align: center;
+  font-size: 23px;
+}
+
+/* 2. Reihe: Skills */
+.profile-skills {
+  width: 100%;
+  text-align: center;
+  // margin: 10px 0;
+  // font-weight: bold;
+}
+
+/* 3. Reihe: Balance */
+.profile-balance {
+  width: 100%;
+  text-align: center;
+  font-size: 23px !important;
+  font-weight: bold;
+  color: #333;
+  border: 2px solid black; /* Grauer Rahmen */
+  border-radius: 8px; /* Abgerundete Ecken */
+  padding: 10px; /* Innenabstand für bessere Optik */
+  margin-top: 10px; /* Abstand nach oben */
+  background-color: yellow;
+  margin-bottom: 0rem !important;
+}
+
+.balancecredits {
+  background-color: white;
+  border: 2px solid black; /* 2px dicker schwarzer Rahmen */
+  border-radius: 15px;
+  padding: 5px 10px; /* Abstand zwischen Text und Rahmen */
+  display: flex; /* Damit der Rahmen nur den Text umschließt */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
