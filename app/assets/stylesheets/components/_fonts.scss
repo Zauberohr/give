@@ -4,7 +4,14 @@
 /* 1. Primary Heading (Hauptüberschrift) */
 h1{
   font-family: "Sansita Swashed", system-ui;
-  font-size: 30px; /* Oder eine gewünschte Größe */
+  font-size: 35px; /* Oder eine gewünschte Größe */
+  letter-spacing: 2px; /* Abstand zwischen den Buchstaben */
+  text-shadow:
+  -0.5px -0.5px 0 yellow,
+  0.5px -0.5px 0 yellow,
+ -0.5px  0.5px 0 yellow,
+  0.5px  0.5px 0 yellow;
+font-weight: bold;
 }
 
 /* 2. Secondary Heading (Unterüberschrift) */
@@ -12,6 +19,13 @@ h2 {
   font-family: "Sansita Swashed", system-ui;
   font-size: 25px; /* Kleinere Größe als Primary */
   font-weight: 600;
+  letter-spacing: 2px; /* Abstand zwischen den Buchstaben */
+  text-shadow:
+  -0.5px -0.5px 0 yellow,
+  0.5px -0.5px 0 yellow,
+ -0.5px  0.5px 0 yellow,
+  0.5px  0.5px 0 yellow;
+font-weight: bold;
 }
 
 /* 3. Bold Text (Allgemeiner fettgedruckter Text) */

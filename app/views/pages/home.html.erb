@@ -1,6 +1,6 @@
 <% if current_user %>
 
-  <h2>About App</h2>
+  <h2>About the App</h2>
   <div>
     <li class="about-card card">
       <p>Got a talent? Learn a new one in return! Give App connects people to exchange skills – no fees, just fair trade. Teach what you know, learn what you love, and grow together. Ready to swap skills?
@@ -8,14 +8,28 @@
   </div>
 
 
-   <h2>Your Profile</h2>
-  <div  class="profile-card card">
-    <img> <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
-    <h3>👋<%= @user.name %></h3>
-    <p>📍<%= @user.city %></p>
-    <p>🪄<%= @user.skills.map(&:name).join(", ") %></p>
-    <p>🪙<%= @user.balance %> credits</p>
+  <!-- Your Profile auf Startseite -->
+ <h2>Your Profile</h2>
+<div class="profile-card card">
+  <!-- 1. Reihe: Username : Profilbild : User.city -->
+  <div class="profile-header">
+    <h3>👋 <%= @user.name %></h3>
+    <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
+    <h3>📍 <%= @user.city %></h3>
   </div>
+
+  <!-- 2. Reihe: Skills -->
+  <div class="profile-skills">
+    🪄 <%= @user.skills.map(&:name).join(", ") %>
+  </div>
+
+  <!-- 3. Reihe: Balance -->
+  <%= link_to dashboard_path do %>
+  <div class="profile-balance">
+    <%= @user.balance %> credits
+    <% end %>
+  </div>
+</div>
 
   <h2>Quick Search</h2>
   <div class="skills-card card">
@@ -24,7 +38,7 @@
     <% end %>
   </div>
 
-  <h2>Trending now</h2>
+  <h2>Now on trend</h2>
 
   <% @user_skills.each do |user_skill| %>
     <%= render "user_skills/user_skill", user_skill: user_skill, details: false%>
