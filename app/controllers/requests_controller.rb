@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_user_skill, only: [:create]
-  before_action :set_request, only: [:completed]
+  before_action :set_request, only: [:completed, :complete]
 
   def index
     @requests_as_taker = current_user.requests
@@ -33,8 +33,12 @@ class RequestsController < ApplicationController
     @creditor.balance += 10
     @creditor.save
 
-    redirect_to new_request_review_path(@request), notice: "Request completed"
+    # render "requests/completed"
+    redirect_to complete_request_path(@request)
+    # redirect_to root_path
+  end
 
+  def complete
   end
 
   private
