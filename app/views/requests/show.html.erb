@@ -3,7 +3,7 @@
   <h1 class="request-header">Your Request for <%= @request.user_skill.skill.name %></h1>
 </div>
 
-<h3 class="request-header"><%= link_to "Back", requests_path, class: "messagebackbutton" %></h3>
+<h3 class="request-header"><%= link_to "Back", user_skill_path(@request.user_skill), class: "messagebackbutton" %></h3>
 <div class="container chat">
   <div class="message-button d-flex justify-content-between">
     <a class="message-cancel btn btn-danger">CANCEL</a>
