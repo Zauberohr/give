@@ -19,7 +19,7 @@
   left: 50%;
   transform: translateX(-50%);
   margin-top: 80px;
-  box-gsshadow: 0px 0px 130px rgba(0, 0, 0, 4.8);
+  filter: drop-shadow(4px 4px 6px rgba(100, 100, 100, 0.8));
 }
 /* Untere Navbar Styling */
 /* Untere Navbar mit abgerundeten Ecken und Abstand vom Rand */
@@ -40,19 +40,20 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: lightcoral;
+  background: yellow;
   position: fixed;
   bottom: 15px; /* Löst sie vom Rand */
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 95%;
   height: 60px;
   z-index: 1000; /* Über dem Overlay */
   padding: 10px 0;
+  border: 2px solid black;
   border-radius: 20px;
-  box-shadow: 0px 0px 130px rgba(0, 0, 0, 4.8);
+  box-shadow: 0px -25px 100px rgba(0, 0, 0, 4.8);
   background: linear-gradient(to bottom right,
-                    lightcoral, lightyellow);
+                   orange, magenta);
 }
 
 /* Jeder Button nimmt gleich viel Platz ein */
@@ -70,13 +71,12 @@
 .nav-icon {
   width: 30px; /* Falls du eine andere Größe brauchst, anpassen */
   height: auto;
+  filter: none; /* Entfernt die Weiß-Färbung */
+  color: yellow;
   filter: brightness(0) invert(1); /* Macht Icons weiß, falls nötig */
   transition: transform 0.2s ease-in-out;
-}
-
-/* Hover-Effekt für Animation */
-.bottom-nav-item:hover .nav-icon {
-  transform: scale(1.1); /* Vergrößert das Icon leicht */
+  filter: brightness(0) invert(1) drop-shadow(4px 4px 6px rgba(100, 100, 100, 0.8));
+  transition: transform 0.2s ease-in-out;
 }
 
 .navbarbottomspace {

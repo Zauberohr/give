@@ -1,0 +1,50 @@
+.show-userfrom{
+text-align: center;
+margin-bottom: 50px;
+margin-top: 15px;
+}
+
+.show-profile-header {
+  display: flex;
+  justify-content: center; /* Zentriert den gesamten Inhalt */
+  align-items: center; /* Sorgt dafür, dass beide Elemente vertikal ausgerichtet sind */
+  width: 100%;
+}
+
+.show-profile-picture {
+  flex: 1; /* Nimmt die Hälfte des verfügbaren Platzes ein */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px; /* Reduziere die Bildgröße */
+  height: 80px; /* Erhalte ein gleichmäßiges Quadrat */
+  border-radius: 50%; /* Falls es rund bleiben soll */
+  object-fit: cover; /* Stellt sicher, dass das Bild nicht verzerrt wird */
+}
+
+.show-skills-card {
+  flex: 1; /* Nimmt die Hälfte des Platzes ein */
+  text-align: left;
+  border: 2px solid black; /* Dünner grauer Rand */
+  background-color: white; /* Weißer Hintergrund */
+  padding: 10px; /* Abstand innerhalb der Box */
+  border-radius: 15px; /* Leicht abgerundete Ecken */
+  margin-left: 10px;
+}
+
+.show-skill-list {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.show-card-text {
+  flex: 1; /* Nimmt den restlichen Platz ein */
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.show-card-text {
+}

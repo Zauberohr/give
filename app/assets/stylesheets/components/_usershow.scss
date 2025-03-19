@@ -5,7 +5,7 @@ reviews-container {
 
 .review-card {
   background: #fff;
-  border: 1px solid lightcoral;
+  border: 1px solid yellow;
   border-radius: 25px;
   padding: 15px;
   width: 100%;
@@ -19,7 +19,7 @@ reviews-container {
 }
 
 .rating {
-  background-color: lightcoral;
+  background-color: yellow;
   padding: 3px 6px;
   border-radius: 5px;
   font-weight: bold;
@@ -50,9 +50,6 @@ reviews-container {
   text-align: center;
 }
 
-.skill-card:hover {
-  transform: scale(1.03);
-}
 
 .primary-skill {
   background-color: #7094bb;
@@ -94,19 +91,6 @@ reviews-container {
   gap: 20px;
 }
 
-.profile-picture {
-  width: 300px;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 3px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
 .skills-container-profile {
   display: flex;
   flex-wrap: wrap;
@@ -122,6 +106,48 @@ reviews-container {
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  border: 1px solid lightcoral;
+  border: 1px solid yellow;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Falls eine maximale Breite gewünscht ist */
+  margin: 0 auto;
+}
+
+/* Profilbild und erste Skill-Card nebeneinander */
+// .profile-header {
+//   display: flex;
+//   justify-content: space-between; /* Stellt sicher, dass beide Elemente verteilt werden */
+//   align-items: center;
+//   width: 100%;
+//   gap: 20px; /* Abstand zwischen Profilbild und Skill-Card */
+// }
+
+/* Profilbild-Styling */
+// .profilpicture img {
+//   width: 100px; /* Größe anpassen */
+//   height: 100px;
+//   border-radius: 50%;
+//   object-fit: cover;
+// }
+
+/* Skills-Card Styling */
+.skill-card {
+  flex: 1; /* Skill-Card nimmt den verfügbaren Platz ein */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Weitere Skills darunter */
+.skill-list {
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
 }

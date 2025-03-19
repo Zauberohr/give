@@ -13,7 +13,6 @@ class User < ApplicationRecord
 
   has_many :reviews, through: :requests
 
-
   private
 
   def add_credit

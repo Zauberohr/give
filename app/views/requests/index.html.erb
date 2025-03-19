@@ -4,10 +4,10 @@
 
   <!-- Button zum Anzeigen der Requests -->
   <div class="buttonsrequestcontainer">
-    <button data-action="click->toggle#fireSent" data-toggle-target="sentButton" class="btn btn-primary chat-toggle-btn">
+    <button data-action="click->toggle#fireSent" data-toggle-target="sentButton" class="btn btn-outline-primary chat-toggle-btn">
       Your Requests
     </button>
-    <button data-action="click->toggle#fireReceived" data-toggle-target="receivedButton" class="btn btn-outline-primary chat-toggle-btn">
+    <button data-action="click->toggle#fireReceived" data-toggle-target="receivedButton" class="btn btn-primary chat-toggle-btn">
       Received Requests
     </button>
   </div>
@@ -15,14 +15,16 @@
   <!-- Requests as Taker -->
   <div data-toggle-target="sent" class="chat-section d-none">
     <h2 class="chat-subtitle">Requests You Sent</h2>
-    <% @requests_as_taker.each do |request| %>
-      <% unless request.completed == true %>
+    <% @requests_as_taker.order(created_at: :desc).each do |request| %>
+      <% unless request.completed == true %><%= link_to request_path(request), class:"request-link" do %>
         <div class="chat-card">
           <p class="chat-text">
-            Your request to <%= link_to request.user_skill.user.name, request_path(request), class: "chat-link" %>
+            Your request to <strong><%= request.user_skill.user.name %></strong>
             for <br><strong><%= request.user_skill.skill.name %></strong>
           </p>
+
         </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -30,14 +32,15 @@
   <!-- Requests als Giver -->
   <div data-toggle-target="received" class="chat-section">
     <h2 class="chat-subtitle">Requests You Received</h2>
-    <% @requests_as_giver.each do |request| %>
-      <% unless request.completed == true %>
+    <% @requests_as_giver.order(created_at: :desc).each do |request| %>
+      <% unless request.completed == true %><%= link_to request_path(request), class:"request-link" do %>
         <div class="chat-card">
           <p class="chat-text">
-            <%= link_to request.user.name, request_path(request), class: "chat-link" %> request
+            <strong><%= request.user.name %></strong> request
             for <br><strong><%= request.user_skill.skill.name %></strong>
           </p>
         </div>
+      <% end %>
       <% end %>
     <% end %>
   </div>

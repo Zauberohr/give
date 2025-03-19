@@ -2,11 +2,12 @@
   background: white;
   margin-top: 9px;
   margin-bottom: 30px;
-  height: calc(90vh - 75px);
+  height: calc(78vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  border-radius: 15px;
 
   .message {
     display: flex;
@@ -63,7 +64,51 @@
     }
   }
 }
+.container-chat {
+  display: flex;
+  justify-content: center; /* Zentriert die Buttons */
+  gap: 10px; /* Abstand zwischen den Buttons */
+  width: 100%;
+  gap: 5px;
+}
 
-.message-a {
+.message-solved {
+  flex: 1;
+  margin-top: 5px;
   text-decoration: none;
+  background-color: rgb(87, 155, 87);
+  font-size: 15px;
+  padding: 10px 35px;
+  border: 2px solid black;
+  border-radius: 15px;
+  color: white;
+}
+.message-cancel {
+  flex: 1;
+  margin-top: 5px;
+  text-decoration: none;
+  background-color: hwb(349 26% 3%);
+  font-size: 15px;
+  padding: 10px 35px;
+  border: 2px solid black;
+  border-radius: 15px;
+  color: white;
+}
+
+.messagebackbutton {
+  display: flex;
+  color: Black;
+  font-weight: bold;
+  background-color: yellow;
+  border: 2px solid black;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadowchat {
+  z-index: 2000;
 }

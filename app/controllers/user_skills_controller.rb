@@ -9,6 +9,10 @@ class UserSkillsController < ApplicationController
       @query = params[:search][:query]
       @user_skills = UserSkill.joins(:skill).where(skill:{ id: params[:search][:query] })
     end
+    if params[:query]
+      @query = params[:query]
+      @user_skills = UserSkill.joins(:skill).where(skill:{ name: params[:query] })
+    end
   end
 
   def show

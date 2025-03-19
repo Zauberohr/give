@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  resources :requests do
+  member do
+    get :complete  # This creates a GET route like /requests/:id/completed
+  end
+end
+
   patch "completed/:id", to: "requests#completed", as: :completed
   # Defines the root path route ("/")
   # root "posts#index"
