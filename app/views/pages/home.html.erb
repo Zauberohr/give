@@ -19,7 +19,7 @@
 
   <h2>Quick Search</h2>
   <div class="skills-card card">
-    <% Skill.all.sample(10).each do |skill| %>
+    <% @skills.each do |skill| %>
       <span class="badge rounded-pill pill"><%= link_to skill.name, user_skills_path %></span>
     <% end %>
   </div>
