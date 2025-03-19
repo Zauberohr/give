@@ -1,9 +1,20 @@
-/* Container für Bild + Skills */
-.profile-container {
-  display: flex;
-  align-items: center; /* Damit Profilbild & Text oben ausgerichtet sind */
-  gap: 20px;
+/* Profilfoto */
+.review-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid yellow;
+  object-fit: cover;
+  display: block;
 }
+
+.profilpage-skill-card {
+  border: 2px solid white; /* Weißer Rahmen um den gesamten Text */
+  padding: 10px; /* Innenabstand, damit der Text nicht direkt am Rand klebt */
+  margin: 10px; /* Außenabstand für etwas Luft um die Box */
+  display: inline-block; /* Sorgt dafür, dass der Rahmen nur so groß ist wie der Inhalt */
+}
+
 
 .info-container {
   margin-top: 20px;
@@ -13,8 +24,8 @@
 }
 
 .chat-button {
-  background-color: lightcoral; /* Rote Farbe für den Button */
-  color: white;
+  background-color: yellow; /* Rote Farbe für den Button */
+  color: black;
   border-radius: 15px;
   text-decoration: none;
   display: inline-block;
@@ -23,21 +34,14 @@
   justify-content: center;
   margin-bottom: 10px;
   margin-top: 10px;
+  border: 2px solid black;
 }
 
 
 .chat-button:hover {
   background-color: #e04b4b; /* Dunkleres Rot beim Hover */
 }
-/* Profilfoto */
-.review-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 5px solid lightcoral;
-  object-fit: cover;
-  display: block;
-}
+
 
 
 .userfrom {
@@ -102,7 +106,7 @@ margin-bottom: 10px;
 
 /* Links Styling */
 .chat-link {
-  color: lightcoral;
+  color: yellow;
   font-weight: bold;
   text-decoration: none;
 }
