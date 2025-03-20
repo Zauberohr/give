@@ -48,7 +48,8 @@
   <h1>Goodbye</h1>
   <div class="homepage-standard">
     <%= form_with url: user_skills_path, method: :get do %>
-      <%= submit_tag "Sign-in/Sign-up", name: "", class: "btn btn-primary signup-home" %>
+      <%= submit_tag "Log-in", name: "", class: "btn btn-primary signup-home" %>
+      <%= submit_tag "Sign-up", formaction: "/users/sign_up", name: "", class: "btn btn-primary signup-home" %>
     <% end %>
   </div>
 <% end %>

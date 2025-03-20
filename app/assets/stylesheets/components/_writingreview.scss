@@ -6,10 +6,11 @@
 }
 
 .form-actions {
-  flex: 1;
+  // flex: 1;
   text-align: center;
   border: 2px solid black;
   border-radius: 15px;
+  background-color: yellow;
 }
 
 .buttonreview {
@@ -23,4 +24,9 @@
   text-align: center;
   border: 2px solid black;
   border-radius: 15px;
+}
+
+.log-in-btn {
+  padding-left: 170px;
+  padding-right: 170px;
 }
