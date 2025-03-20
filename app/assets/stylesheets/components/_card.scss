@@ -77,7 +77,7 @@
   align-items: center;
   padding: 15px;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 25px;
   max-width: 400px; /* Optionale Begrenzung der Breite */
   margin: 0 auto; /* Zentriert die Card */
 }
@@ -88,7 +88,7 @@
   justify-content: space-between;
   align-items: center;
   width: 80%;
-  filter: drop-shadow(4px 4px 6px rgba(255, 255, 127, 0.8));
+  filter: drop-shadow(0px 0px 10px  #ff69b4);
 }
 
 .profile-header h3 {
@@ -115,7 +115,7 @@
 .profile-skills {
   width: 100%;
   text-align: center;
-  // margin: 10px 0;
+  margin-top: 5px;
   // font-weight: bold;
 }
 

@@ -12,9 +12,9 @@
   <div class="profile-card card">
     <!-- 1. Reihe: Username : Profilbild : User.city -->
     <div class="profile-header">
-      <h3>👋 <%= @user.name %></h3>
+      <div class="d-flex flex-column"> <h3>👋 </h3> <h3> <%= @user.name %> </h3> </div>
       <%= cl_image_tag @user.photo.key, class: "rounded-image", alt: "user profile picture" %>
-      <h3>📍 <%= @user.city %></h3>
+     <div class="d-flex flex-column"> <h3>📍</h3> <h3> <%= @user.city %></h3></div>
     </div>
 
     <!-- 2. Reihe: Skills -->
