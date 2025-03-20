@@ -25,7 +25,7 @@
     <!-- 3. Reihe: Balance -->
     <%= link_to dashboard_path, class:"home-credit-link" do %>
       <div class="profile-balance">
-        <%= @user.balance %> credits
+        <h1>Credit: <%= @user.balance %> <%= image_tag "yellowpink.png", class:"give-coin-profile"%></h1>
       </div>
     <% end %>
   </div>
@@ -45,11 +45,62 @@
 <% else %>
   <%# <div class="homepage-standard"> %>
   <%# <%= image_tag "TGkoralle.png" %>
-  <h1>Goodbye</h1>
-  <div class="homepage-standard">
+  <h1 class="text-center">Goodbye from GIVE!</h1>
+  <div class="homepage-standard text-center">
     <%= form_with url: user_skills_path, method: :get do %>
       <%= submit_tag "Log-in", name: "", class: "btn btn-primary signup-home" %>
       <%= submit_tag "Sign-up", formaction: "/users/sign_up", name: "", class: "btn btn-primary signup-home" %>
     <% end %>
+  </div>
+  <div class="team-card">
+    <div class="card team">
+    <div class="card-content">
+      <%= image_tag "Ahlam.jpg", class: "rounded-image" %>
+      <div>
+        <h2 class="user_skill">Ahlam</h2>
+        <h6>Berlin</h6>
+        <h4>Back-End, User-profile & Credits</h4>
+        ⭐️⭐️⭐️⭐️⭐️
+      </div>
+      </div>
+      <%# <div class="card-rating">⭐️⭐️⭐️⭐️⭐️</div> %>
+    </div>
+    <div class="card team">
+      <div class="card-content">
+        <%= image_tag "Massih.jpeg", class: "rounded-image" %>
+        <div>
+          <h2 class="user_skill">Massih</h2>
+          <h6>Berlin</h6>
+          <h4>Back-End, Data-base, Ratings & PWA </h4>
+          ⭐️⭐️⭐️⭐️⭐️
+        </div>
+      </div>
+      <%# <div class="card-rating">⭐️⭐️⭐️⭐️⭐️</div> %>
+    </div>
+    <div class="card team">
+      <div class="card-content">
+      <%= image_tag "naakul.jpg", class: "rounded-image" %>
+      <div>
+        <h2 class="user_skill">Naakul</h2>
+        <h6>Berlin</h6>
+        <h4>Back-End, Product-Lead, <br>Front-End support & JavaScript</h4>
+        ⭐️⭐️⭐️⭐️⭐️
+      </div>
+      </div>
+      <%# <div class="card-rating">⭐️⭐️⭐️⭐️⭐️</div> %>
+    </div>
+    </div>
+    <div class="card team">
+    <div class="card-content">
+      <%= image_tag "Otto.jpeg", class: "rounded-image" %>
+      <div>
+        <h2 class="user_skill">Otto</h2>
+        <h6>Berlin</h6>
+        <h4>Front-End & Design, Founder</h4>
+        ⭐️⭐️⭐️⭐️⭐️
+      </div>
+      </div>
+      <%# <div class="card-rating">⭐️⭐️⭐️⭐️⭐️</div> %>
+    </div>
   </div>
 <% end %>

@@ -2,7 +2,10 @@
 
 <div class=profilpicture margin-top: 20px;>
   <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+      <%= cl_image_tag @user.photo.key, class: "review-image", alt: "#{@user.name} Profile Picture" %>
+    <% end %>
+
   <% else %>
     <%= image_tag "Profil_Button_standard.png", class: "rounded-image" %>
   <% end %>
@@ -23,11 +26,6 @@
 </div>
 
     <div class="balancecredits">
-        <h1><strong>Balance:</strong><br> <%= @user.balance %> credits </h1>
+        <h1><strong>Credit:</strong> <%= @user.balance %> <%= image_tag "yellowpink.png", class:"give-coin-profile"%> </h1>
     </div>
-
-<%= button_to destroy_user_session_path, method: :delete, class: "logout-button" do %>
-  LOGOUT
-<% end %>
-
 </div>

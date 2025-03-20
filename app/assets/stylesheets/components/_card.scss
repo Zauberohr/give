@@ -35,6 +35,16 @@
   flex-shrink: 0; /* Verhindert, dass das Bild verkleinert wird */
 }
 
+.card-token {
+  background-color: yellow;
+  border: 3px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: large;
+  border-radius: 30px;
+  margin-left: auto ;
+}
+
 .rounded-image {
   width: 100px; /* Größe des Bildes */
   height: 100px;
@@ -127,23 +137,32 @@
   font-weight: bold;
   color: #333;
   border: 2px solid black; /* Grauer Rahmen */
-  border-radius: 8px; /* Abgerundete Ecken */
+  border-radius: 50px; /* Abgerundete Ecken */
   padding: 10px; /* Innenabstand für bessere Optik */
   margin-top: 10px; /* Abstand nach oben */
   background-color: yellow;
   margin-bottom: 0rem !important;
-  padding-left: 114px;
-  padding-right: 114px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.profile-balance h1 {
+  margin-bottom: 0;
 }
 
 .balancecredits {
-  background-color: white;
+  background-color: yellow;
   border: 2px solid black; /* 2px dicker schwarzer Rahmen */
   border-radius: 15px;
   padding: 5px 10px; /* Abstand zwischen Text und Rahmen */
   display: flex; /* Damit der Rahmen nur den Text umschließt */
   margin-top: 10px;
   margin-bottom: 10px;
+  justify-content: center;
+}
+
+.balancecredits h1 {
+  margin-bottom: 0;
 }
 
 .request-link {
@@ -152,4 +171,40 @@
 
 .home-credit-link {
   text-decoration: none;
+}
+
+.give-coin {
+  width: 20px;
+  padding: 1px;
+  // border: 2px solid black;
+  border-radius: 50px;
+  background-color: black;
+  margin-bottom: 3px;
+}
+
+.give-coin-profile {
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.log-out-profile {
+  margin-top: 20px;
+  margin-bottom: 0
+}
+
+.log-out-profile {
+  display: flex;
+}
+
+.card-rating {
+  margin-left: auto ;
+}
+
+.team-card {
+  margin-top: 35px;
+}
+
+.team {
+  margin-bottom: 10px;
 }
