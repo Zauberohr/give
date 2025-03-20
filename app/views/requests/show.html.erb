@@ -1,12 +1,13 @@
 <!-- app/views/requests/show.html.erb -->
 <div class="d-flex justify-content-between">
-  <h1 class="request-header">Your Request for <%= @request.user_skill.skill.name %></h1>
+  <h1 class="request-header">Your Request for <%= @request.user_skill.skill.name %> </h1>
 </div>
 
-<h3 class="request-header"><%= link_to "Back", user_skill_path(@request.user_skill), class: "messagebackbutton" %></h3>
+<h3 class="request-header"></h3>
 <div class="container chat">
   <div class="message-button d-flex justify-content-between">
-    <a class="message-cancel btn btn-danger">CANCEL</a>
+
+    <%= link_to "BACK", user_skill_path(@request.user_skill), class: "messagebackbutton" %>
     <%= link_to "SOLVED", completed_path(@request), data: {turbo_method: :patch}, class: "message-solved btn btn-success"%>
   </div>
 
@@ -24,6 +25,7 @@
         html: { class: "d-flex shadowchat", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
     <% other_user = current_user == @request.user_skill.user ? @request.user : @request.user_skill.user %>
     <%= f.input :content, label: false, placeholder: "Message #{other_user.name}", wrapper_html: { class: "flex-grow-1" } %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3 message-send" %>
   <% end %>
 </div>
+<%# <a class="message-cancel btn btn-danger">CANCEL</a> %>
