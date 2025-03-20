@@ -73,7 +73,7 @@ excluded_emails = ["naakul@lewagon.com", "otto@lewagon.com", "massih@lewagon.com
 plumbing_users = User.where.not(email: excluded_emails).limit(5) # Adjusted limit to 5
 plumbing_users.each do |user|
   unless UserSkill.exists?(user: user, skill: plumbing_skill)
-    UserSkill.create!(user: user, skill: plumbing_skill, experience: 'Advanced', overall_rating: 5)
+    UserSkill.create!(user: user, skill: plumbing_skill, experience: 'Advanced', overall_rating: 3)
     puts "Assigned Plumbing skill to #{user.name}."
   else
     puts "Skipped assigning Ruby skill to #{user.name} (already assigned)."
@@ -81,7 +81,7 @@ plumbing_users.each do |user|
 end
 
 
-excluded_emails = ["naakul@lewagon.com", "otto@lewagon.com", "massih@lewagon.com", "ahlam@lewagon.com", "bilal@lewagon.com"]
+excluded_emails = ["naakul@lewagon.com", "otto@lewagon.com", "massih@lewagon.com", "bilal@lewagon.com" , "ahlam@lewagon.com"]
 User.where.not(email: excluded_emails).each do |user|
   user_experience = ["Beginner", "Intermidiate", "Advanced"]
   rand(3..5).times do
@@ -89,7 +89,7 @@ User.where.not(email: excluded_emails).each do |user|
       user: user,
       skill: Skill.all.sample,
       experience: user_experience.sample,
-      overall_rating: rand(2..5)
+      overall_rating: rand(1..3)
     )
   end
 end
@@ -138,7 +138,7 @@ end
   skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
   skill_objects.each do |skill|
-    UserSkill.create(user: bilal, skill: skill, experience: 'Expert', overall_rating: 5)
+    UserSkill.create(user: bilal, skill: skill, experience: 'Expert', overall_rating: 4)
   end
   puts "Assigned skills to Bilal."
 
@@ -163,7 +163,7 @@ end
   completed_requests.each_with_index do |request, index|
     Review.create!(
       request: request,
-      rating: 5,
+      rating: 4,
       content: review_contents[index],
       title: "Review for #{request.user_skill.skill.name} service"
     )
@@ -172,14 +172,51 @@ end
   # BILAL ENDE
 
 
+# Ahlam START
+ahlam = User.find_by(email: "ahlam@lewagon.com")
+skills = ['SQL', 'HTML', 'CSS', 'React', 'Node.js']
+skill_objects = skills.map { |skill| Skill.find_or_create_by(name: skill) }
 
+skill_objects.each do |skill|
+  UserSkill.create(user: ahlam, skill: skill, experience: 'Expert', overall_rating: 4)
+end
+puts "Assigned skills to Ahlam."
+
+# Create 1 Request for ahlam's skills
+ahlam.user_skills.each do |user_skill|
+  5.times do
+    request = Request.create!(user_id: User.all.sample.id, user_skill_id: user_skill.id, completed: true)
+    puts "Created request for Ahlam's skill: #{user_skill.skill.name}"
+  end
+end
+
+# Create 5 Reviews for ahlam adjusted with gpt 
+completed_requests = Request.where(user_skill: ahlam.user_skills, completed: true).limit(5)
+review_contents = [
+  "Ahlam's AI model completely transformed my Bitcoin trading strategy—my profits have skyrocketed! Highly recommended!",
+  "Fantastic experience working with Bilal, his AI insights are next-level. He automated my trades with incredible precision!",
+  "One of the best AI experts in the game! His trading algorithms are top-notch and work flawlessly.",
+  "ahlam AI automation saved me hours of manual trading. Now my portfolio is growing on autopilot!",
+  "Highly skilled AI modeler—Bilal’s strategies helped me scale my crypto investments efficiently!"
+]
+
+completed_requests.each_with_index do |request, index|
+  Review.create!(
+    request: request,
+    rating: 4,
+    content: review_contents[index],
+    title: "Review for #{request.user_skill.skill.name} service"
+  )
+  puts "Created review for request ##{request.id} (Skill: #{request.user_skill.skill.name})"
+end
+# Ahlam ENDE
 
 
 
 
 
 UserSkill.all.each do |user_skill|
-  rand(3..5).times do
+  rand(1..3).times do
     request_data = {
       # user making the request (taker):
       user_id: User.all.sample.id,
