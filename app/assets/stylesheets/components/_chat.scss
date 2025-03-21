@@ -30,12 +30,14 @@
     max-width: 70%;
     width: fit-content;
     word-wrap: break-word;
+    // font-size: xx-large;
   }
 
   .message.sent .message-content {
     align-self: flex-end;
     background: $blue;
     color: $light-gray;
+    // font-size: xx-large;
   }
   .message.sent .message-info {
     align-self: flex-end;
@@ -44,6 +46,7 @@
   .message.received .message-content {
     align-self: flex-start;
     background: $gray-200;
+    // font-size: xx-large;
   }
 
   .message.received .message-info {
@@ -118,7 +121,7 @@
   border: 2px solid black;
   border-radius: 15px;
   text-align: center;
-  font-size: 15px;
+  // font-size: 15px;
   text-decoration: none;
   justify-content: center;
   align-items: center;
@@ -160,9 +163,16 @@
 
 .chat .message.sent .message-content {
   background-color: #ffa4d1;
+  font-size: xx-large;
 }
 
 .chat .message.received .message-content {
   background-color: lightgray;
   color: black;
+  font-size: xx-large;
+}
+
+
+.user-summary {
+  font-size: large;
 }
