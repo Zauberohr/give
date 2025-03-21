@@ -85,7 +85,7 @@
   margin-top: 10px;
   margin-left: 5px;
   text-decoration: none;
-  background-color: #00c96f;
+  background-color: #00532e;
   font-size: 15px;
   padding: 10px 35px;
   border: 2px solid black;
@@ -114,7 +114,7 @@
   // display: flex;
   color: rgb(252, 252, 252);
   font-weight: bold;
-  background-color: #ff69b4;
+  background-color: #ffa4d1;
   border: 2px solid black;
   border-radius: 15px;
   text-align: center;
@@ -130,18 +130,18 @@
 
 .message-send {
   --bs-btn-color: #fbfbfb;
-  --bs-btn-bg: #ff69b4;
+  --bs-btn-bg: #ffa4d1;
   --bs-btn-border-color: #020202;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #ff69b4;
+  --bs-btn-hover-bg: #ffa4d1;
   --bs-btn-hover-border-color: #020202;
   --bs-btn-focus-shadow-rgb: 217, 217, 0;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #ff69b4;
+  --bs-btn-active-bg: #ffa4d1;
   --bs-btn-active-border-color: #000000;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #ff69b4;
+  --bs-btn-disabled-bg: #ffa4d1;
   --bs-btn-disabled-border-color: rgb(0, 0, 0);
   --bs-btn-font-weight: bold;
   --bs-btn-border-radius: 5px
@@ -159,7 +159,7 @@
 }
 
 .chat .message.sent .message-content {
-  background-color: #ff69b4;
+  background-color: #ffa4d1;
 }
 
 .chat .message.received .message-content {
