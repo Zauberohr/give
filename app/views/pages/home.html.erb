@@ -38,9 +38,14 @@
   </div>
 
   <h2>Now on trend</h2>
+  <% if @user_skills.present? %>
   <% @user_skills.each do |user_skill| %>
-    <%= render "user_skills/user_skill", user_skill: user_skill, details: false%>
+    <%= render "user_skills/user_skill", user_skill: user_skill, details: false %>
   <% end %>
+<% else %>
+  <p>No trending skills found.</p>
+<% end %>
+
 
 <% else %>
   <%# <div class="homepage-standard"> %>
