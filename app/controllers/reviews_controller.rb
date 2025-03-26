@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
       @review.request = @request
 
       if @review.save
-        redirect_to user_skill_path(@request.user_skill), notice: 'Review successfully created!'
+        redirect_to user_skill_path(@request.user_skill)
       else
         render :new, status: :unprocessable_entity
       end
